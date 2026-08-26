@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Pemantauan Risiko Keselamatan Lingkungan
+    </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="header-content">
+
+        <div class="logo">
+            K3RS
+        </div>
+
+        <div>
+
+            <h1>
+                Pemantauan Risiko
+            </h1>
+
+            <p>
+                Keselamatan Lingkungan
+            </p>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- FORM -->
+
+<main class="form-container">
+
+    <div class="form-card">
+
+        <h2>
+            Formulir Pemantauan Risiko Keselamatan Lingkungan
+        </h2>
+
+        <p class="form-description">
+            Silakan lengkapi data pemantauan dengan benar.
+        </p>
+
+
+        <!-- TANGGAL -->
+
+        <div class="form-group">
+
+            <label for="tanggal">
+                Tanggal Pemantauan
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="date"
+                id="tanggal"
+                name="tanggal"
+                required
+            >
+
+        </div>
+
+
+        <!-- PETUGAS -->
+
+        <div class="form-group">
+
+            <label for="petugas">
+                Nama Petugas
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="petugas"
+                name="petugas"
+                placeholder="Masukkan nama petugas"
+                required
+            >
+
+        </div>
+
+
+        <!-- UNIT -->
+
+        <div class="form-group">
+
+            <label for="unit">
+                Unit / Bagian
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="unit"
+                name="unit"
+                placeholder="Masukkan unit atau bagian"
+                required
+            >
+
+        </div>
+
+
+        <!-- LOKASI -->
+
+        <div class="form-group">
+
+            <label for="lokasi">
+                Area / Lokasi
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="lokasi"
+                name="lokasi"
+                placeholder="Contoh: Koridor Gedung A"
+                required
+            >
+
+        </div>
+
+
+        <!-- RISIKO -->
+
+        <div class="form-group">
+
+            <label for="risiko">
+                Potensi Risiko Keselamatan
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="risiko"
+                name="risiko"
+                placeholder="Tuliskan potensi risiko yang ditemukan"
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- DAMPAK -->
+
+        <div class="form-group">
+
+            <label for="dampak">
+                Dampak
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="dampak"
+                name="dampak"
+                placeholder="Tuliskan dampak yang mungkin terjadi"
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- PENGENDALIAN -->
+
+        <div class="form-group">
+
+            <label for="pengendalian">
+                Pengendalian
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="pengendalian"
+                name="pengendalian"
+                placeholder="Tuliskan pengendalian yang sudah dilakukan"
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- HASIL -->
+
+        <div class="form-group">
+
+            <label for="hasil">
+                Hasil Pemantauan
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="hasil"
+                name="hasil"
+                placeholder="Tuliskan hasil pemantauan"
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- REKOMENDASI -->
+
+        <div class="form-group">
+
+            <label for="rekomendasi">
+                Rekomendasi
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="rekomendasi"
+                name="rekomendasi"
+                placeholder="Tuliskan rekomendasi perbaikan"
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- TOMBOL -->
+
+        <button
+            type="button"
+            class="btn-submit"
+            onclick="simpanPemantauan()"
+        >
+
+            SIMPAN PEMANTAUAN
+
+        </button>
+
+
+        <a
+            href="index.html"
+            class="btn-back"
+        >
+
+            ← Kembali ke Halaman Utama
+
+        </a>
+
+
+    </div>
+
+</main>
+
+
+<script>
+
+function simpanPemantauan() {
+
+    const tanggal =
+        document.getElementById("tanggal").value;
+
+    const petugas =
+        document.getElementById("petugas").value;
+
+    const unit =
+        document.getElementById("unit").value;
+
+    const lokasi =
+        document.getElementById("lokasi").value;
+
+    const risiko =
+        document.getElementById("risiko").value;
+
+    const dampak =
+        document.getElementById("dampak").value;
+
+    const pengendalian =
+        document.getElementById("pengendalian").value;
+
+    const hasil =
+        document.getElementById("hasil").value;
+
+    const rekomendasi =
+        document.getElementById("rekomendasi").value;
+
+
+    if (
+        tanggal === "" ||
+        petugas === "" ||
+        unit === "" ||
+        lokasi === "" ||
+        risiko === "" ||
+        dampak === "" ||
+        pengendalian === "" ||
+        hasil === "" ||
+        rekomendasi === ""
+    ) {
+
+        alert(
+            "Mohon lengkapi semua data terlebih dahulu."
+        );
+
+        return;
+    }
+
+
+    alert(
+        "Data pemantauan berhasil diisi.\n\n" +
+        "Tahap berikutnya data akan disimpan ke database."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
