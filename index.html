@@ -1,88 +1,1068 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>SIPERKA K3RS</title>
 
-        <!-- 2. KEAMANAN -->
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        <div class="card">
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f8f9;
+            color: #17343d;
+            min-height: 100vh;
+        }
 
-            <div class="icon">🔐</div>
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #075e54, #0b8278);
+            color: white;
+            padding: 30px 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
 
-            <h3>
-                Keamanan
-            </h3>
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+        }
 
-            <p>
-                Pemantauan risiko keamanan dan kondisi
-                keamanan di lingkungan rumah sakit.
-            </p>
+        .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.16);
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
 
-            <a href="keamanan.html" class="btn">
-                Mulai Pemantauan
-            </a>
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 7px;
+        }
 
-        </div>
+        header p {
+            font-size: 15px;
+            opacity: 0.9;
+        }
 
+        /* CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px 20px;
+        }
 
-        <!-- 3. RISIKO KEBAKARAN -->
+        /* INFORMASI */
+        .info-box {
+            background: white;
+            border: 1px solid #dce7ea;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.05);
+        }
 
-        <div class="card">
+        .info-icon {
+            font-size: 30px;
+        }
 
-            <div class="icon">🔥</div>
+        .info-box h3 {
+            margin-bottom: 6px;
+        }
 
-            <h3>
-                Risiko Kebakaran
-            </h3>
+        .info-box p {
+            color: #64777d;
+            line-height: 1.6;
+            font-size: 14px;
+        }
 
-            <p>
-                Pemantauan potensi risiko kebakaran,
-                sarana proteksi dan jalur evakuasi.
-            </p>
+        /* DASHBOARD CARD */
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
 
-            <a href="kebakaran.html" class="btn">
-                Mulai Pemantauan
-            </a>
+        .card {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid #dce7ea;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.06);
+            position: relative;
+            overflow: hidden;
+            transition: 0.25s;
+        }
 
-        </div>
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
 
+        .card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            background: #08766d;
+        }
 
-        <!-- 4. KESELAMATAN -->
+        .card.keamanan::before {
+            background: #6251a4;
+        }
 
-        <div class="card">
+        .card.kebakaran::before {
+            background: #d05435;
+        }
 
-            <div class="icon">⚠️</div>
+        .card.keselamatan::before {
+            background: #c48722;
+        }
 
-            <h3>
-                Keselamatan
-            </h3>
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 16px;
+        }
 
-            <p>
-                Pemantauan berbagai potensi bahaya
-                dan risiko keselamatan di rumah sakit.
-            </p>
+        .icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            background: #e8f5f3;
+        }
 
-            <a href="keselamatan.html" class="btn">
-                Mulai Pemantauan
-            </a>
+        .keamanan .icon {
+            background: #f0edfa;
+        }
 
-        </div>
+        .kebakaran .icon {
+            background: #fff0eb;
+        }
 
+        .keselamatan .icon {
+            background: #fff5e4;
+        }
+
+        .card h2 {
+            font-size: 20px;
+        }
+
+        .description {
+            color: #64777d;
+            line-height: 1.6;
+            min-height: 50px;
+            margin-bottom: 17px;
+            font-size: 14px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 7px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #eaf5f3;
+            color: #176a63;
+            font-size: 11px;
+            padding: 6px 9px;
+            border-radius: 7px;
+        }
+
+        .keamanan .tag {
+            background: #f1eef9;
+            color: #5d4f96;
+        }
+
+        .kebakaran .tag {
+            background: #fff0eb;
+            color: #a34a34;
+        }
+
+        .keselamatan .tag {
+            background: #fff4e1;
+            color: #97631c;
+        }
+
+        button {
+            border: none;
+            border-radius: 10px;
+            padding: 12px 18px;
+            background: #08766d;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            filter: brightness(0.94);
+        }
+
+        .keamanan button {
+            background: #6251a4;
+        }
+
+        .kebakaran button {
+            background: #d05435;
+        }
+
+        .keselamatan button {
+            background: #c48722;
+        }
+
+        /* FORM */
+        .form-section {
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            margin-top: 25px;
+            border: 1px solid #dce7ea;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.06);
+        }
+
+        .form-section h2 {
+            margin-bottom: 6px;
+        }
+
+        .form-subtitle {
+            color: #64777d;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #ccd9dd;
+            border-radius: 9px;
+            padding: 12px;
+            font-family: inherit;
+            font-size: 14px;
+            background: #fbfdfd;
+            color: #17343d;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #08766d;
+            box-shadow: 0 0 0 3px rgba(8,118,109,0.08);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .cancel {
+            background: #e8eef0;
+            color: #29434b;
+        }
+
+        /* SUMMARY */
+        .summary {
+            margin-top: 25px;
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            border: 1px solid #dce7ea;
+            box-shadow: 0 7px 25px rgba(0,0,0,0.06);
+        }
+
+        .summary h2 {
+            margin-bottom: 5px;
+        }
+
+        .summary p {
+            color: #64777d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .stat {
+            background: #f8fbfb;
+            border: 1px solid #dce7ea;
+            border-radius: 12px;
+            padding: 15px;
+        }
+
+        .stat small {
+            display: block;
+            color: #64777d;
+            margin-bottom: 5px;
+        }
+
+        .stat strong {
+            font-size: 25px;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            color: #71838a;
+            padding: 30px 20px;
+            font-size: 12px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            header h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+
+        <span class="badge">
+            K3RS • SISTEM PEMANTAUAN RISIKO
+        </span>
+
+        <h1>SIPERKA K3RS</h1>
+
+        <p>
+            Sistem Pemantauan Risiko Keselamatan dan Kesehatan Rumah Sakit
+        </p>
 
     </div>
+</header>
+
+
+<main class="container">
+
+    <!-- INFORMASI -->
+    <div class="info-box">
+
+        <div class="info-icon">🏥</div>
+
+        <div>
+
+            <h3>Pemantauan Risiko K3RS</h3>
+
+            <p>
+                Silakan pilih jenis pemantauan yang akan dilakukan.
+                Setiap pemantauan dapat dicatat melalui formulir dan
+                digunakan sebagai dokumentasi hasil pemantauan risiko K3RS.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+    <section class="dashboard">
+
+        <!-- LINGKUNGAN -->
+        <article class="card lingkungan">
+
+            <div class="card-header">
+
+                <div class="icon">🏥</div>
+
+                <div>
+                    <h2>Keselamatan Lingkungan</h2>
+                </div>
+
+            </div>
+
+            <p class="description">
+                Pemantauan potensi risiko keselamatan lingkungan,
+                fasilitas, sarana, prasarana, dan kondisi lingkungan
+                di area rumah sakit.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Lingkungan</span>
+                <span class="tag">Fasilitas</span>
+                <span class="tag">K3RS</span>
+            </div>
+
+            <button onclick="openMonitoring('lingkungan')">
+                Mulai Pemantauan →
+            </button>
+
+        </article>
+
+
+        <!-- KEAMANAN -->
+        <article class="card keamanan">
+
+            <div class="card-header">
+
+                <div class="icon">🔐</div>
+
+                <div>
+                    <h2>Keamanan</h2>
+                </div>
+
+            </div>
+
+            <p class="description">
+                Pemantauan risiko keamanan dan kondisi keamanan
+                di lingkungan rumah sakit.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Keamanan</span>
+                <span class="tag">Akses</span>
+                <span class="tag">Petugas</span>
+            </div>
+
+            <button onclick="openMonitoring('keamanan')">
+                Mulai Pemantauan →
+            </button>
+
+        </article>
+
+
+        <!-- KEBAKARAN -->
+        <article class="card kebakaran">
+
+            <div class="card-header">
+
+                <div class="icon">🔥</div>
+
+                <div>
+                    <h2>Risiko Kebakaran</h2>
+                </div>
+
+            </div>
+
+            <p class="description">
+                Pemantauan potensi risiko kebakaran, sarana proteksi
+                kebakaran, APAR, hydrant, dan jalur evakuasi.
+            </p>
+
+            <div class="tags">
+                <span class="tag">APAR</span>
+                <span class="tag">Hydrant</span>
+                <span class="tag">Evakuasi</span>
+            </div>
+
+            <button onclick="openMonitoring('kebakaran')">
+                Mulai Pemantauan →
+            </button>
+
+        </article>
+
+
+        <!-- KESELAMATAN -->
+        <article class="card keselamatan">
+
+            <div class="card-header">
+
+                <div class="icon">⚠️</div>
+
+                <div>
+                    <h2>Keselamatan</h2>
+                </div>
+
+            </div>
+
+            <p class="description">
+                Pemantauan berbagai potensi bahaya dan risiko
+                keselamatan pada kegiatan, fasilitas, dan area rumah sakit.
+            </p>
+
+            <div class="tags">
+                <span class="tag">Bahaya</span>
+                <span class="tag">Risiko</span>
+                <span class="tag">Keselamatan</span>
+            </div>
+
+            <button onclick="openMonitoring('keselamatan')">
+                Mulai Pemantauan →
+            </button>
+
+        </article>
+
+    </section>
+
+
+    <!-- FORM PEMANTAUAN -->
+    <section id="monitoringForm" class="form-section hidden">
+
+        <h2 id="formTitle">
+            Form Pemantauan
+        </h2>
+
+        <p id="formSubtitle" class="form-subtitle">
+            Silakan isi data pemantauan.
+        </p>
+
+
+        <div class="form-grid">
+
+            <div class="form-group">
+
+                <label for="tanggal">
+                    Tanggal Pemantauan
+                </label>
+
+                <input
+                    type="date"
+                    id="tanggal"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="lokasi">
+                    Area / Lokasi
+                </label>
+
+                <input
+                    type="text"
+                    id="lokasi"
+                    placeholder="Contoh: CSSD / Gedung Flamboyan"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="risiko">
+                    Potensi Risiko / Temuan
+                </label>
+
+                <input
+                    type="text"
+                    id="risiko"
+                    placeholder="Tuliskan potensi risiko atau temuan"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="kondisi">
+                    Kondisi
+                </label>
+
+                <select id="kondisi">
+
+                    <option value="">
+                        Pilih kondisi
+                    </option>
+
+                    <option value="Baik / Sesuai">
+                        Baik / Sesuai
+                    </option>
+
+                    <option value="Perlu Perbaikan">
+                        Perlu Perbaikan
+                    </option>
+
+                    <option value="Tidak Sesuai">
+                        Tidak Sesuai
+                    </option>
+
+                    <option value="Memerlukan Tindak Lanjut">
+                        Memerlukan Tindak Lanjut
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label for="hasil">
+                    Hasil Pemantauan
+                </label>
+
+                <textarea
+                    id="hasil"
+                    placeholder="Tuliskan hasil pemantauan secara objektif..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label for="rekomendasi">
+                    Rekomendasi / Tindak Lanjut
+                </label>
+
+                <textarea
+                    id="rekomendasi"
+                    placeholder="Tuliskan rekomendasi atau tindak lanjut..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="petugas">
+                    Petugas / Pemeriksa
+                </label>
+
+                <input
+                    type="text"
+                    id="petugas"
+                    placeholder="Nama petugas"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="status">
+                    Status Tindak Lanjut
+                </label>
+
+                <select id="status">
+
+                    <option value="Belum Ditindaklanjuti">
+                        Belum Ditindaklanjuti
+                    </option>
+
+                    <option value="Dalam Proses">
+                        Dalam Proses
+                    </option>
+
+                    <option value="Selesai">
+                        Selesai
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-buttons">
+
+            <button onclick="saveMonitoring()">
+                💾 Simpan Pemantauan
+            </button>
+
+            <button
+                class="cancel"
+                onclick="closeMonitoring()"
+            >
+                Tutup
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RINGKASAN -->
+    <section class="summary">
+
+        <h2>Ringkasan Pemantauan</h2>
+
+        <p>
+            Menampilkan jumlah data pemantauan yang tersimpan
+            pada perangkat/browser ini.
+        </p>
+
+
+        <div class="summary-grid">
+
+            <div class="stat">
+
+                <small>
+                    Total Pemantauan
+                </small>
+
+                <strong id="totalData">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <small>
+                    Lingkungan
+                </small>
+
+                <strong id="lingkunganData">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <small>
+                    Keamanan
+                </small>
+
+                <strong id="keamananData">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <small>
+                    Kebakaran + Keselamatan
+                </small>
+
+                <strong id="lainData">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </main>
 
 
 <footer>
-
-    <p>
-        © 2026 SIPERKASA K3RS
-    </p>
-
-    <p>
-        Prototype Inovasi PBL K3RS
-    </p>
-
+    SIPERKA K3RS © 2026
+    <br>
+    Sistem Pemantauan Risiko Keselamatan dan Kesehatan Rumah Sakit
 </footer>
 
-</body>
 
+<script>
+
+    let currentType = "";
+
+
+    const monitoringInfo = {
+
+        lingkungan: {
+            title: "Pemantauan Keselamatan Lingkungan",
+            subtitle:
+                "Dokumentasikan kondisi fasilitas dan potensi risiko keselamatan lingkungan."
+        },
+
+        keamanan: {
+            title: "Pemantauan Keamanan",
+            subtitle:
+                "Dokumentasikan kondisi keamanan dan potensi gangguan keamanan."
+        },
+
+        kebakaran: {
+            title: "Pemantauan Risiko Kebakaran",
+            subtitle:
+                "Dokumentasikan kondisi APAR, hydrant, jalur evakuasi, dan sarana proteksi kebakaran."
+        },
+
+        keselamatan: {
+            title: "Pemantauan Keselamatan",
+            subtitle:
+                "Dokumentasikan potensi bahaya dan risiko keselamatan di area rumah sakit."
+        }
+
+    };
+
+
+    function openMonitoring(type) {
+
+        currentType = type;
+
+        document.getElementById("formTitle").textContent =
+            monitoringInfo[type].title;
+
+        document.getElementById("formSubtitle").textContent =
+            monitoringInfo[type].subtitle;
+
+        document.getElementById("monitoringForm")
+            .classList.remove("hidden");
+
+
+        const today = new Date();
+
+        const year = today.getFullYear();
+
+        const month = String(today.getMonth() + 1)
+            .padStart(2, "0");
+
+        const day = String(today.getDate())
+            .padStart(2, "0");
+
+        document.getElementById("tanggal").value =
+            ${year}-${month}-${day};
+
+
+        document.getElementById("monitoringForm")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    }
+
+
+    function closeMonitoring() {
+
+        document.getElementById("monitoringForm")
+            .classList.add("hidden");
+
+    }
+
+
+    function getMonitoringData() {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem("siperkaK3RSData") || "[]"
+            );
+
+        } catch (error) {
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveMonitoring() {
+
+        const tanggal =
+            document.getElementById("tanggal").value;
+
+        const lokasi =
+            document.getElementById("lokasi").value.trim();
+
+        const risiko =
+            document.getElementById("risiko").value.trim();
+
+        const kondisi =
+            document.getElementById("kondisi").value;
+
+        const hasil =
+            document.getElementById("hasil").value.trim();
+
+        const rekomendasi =
+            document.getElementById("rekomendasi").value.trim();
+
+        const petugas =
+            document.getElementById("petugas").value.trim();
+
+        const status =
+            document.getElementById("status").value;
+
+
+        if (
+            !tanggal ||
+            !lokasi ||
+            !risiko ||
+            !hasil
+        ) {
+
+            alert(
+                "Mohon lengkapi Tanggal, Area/Lokasi, Potensi Risiko, dan Hasil Pemantauan."
+            );
+
+            return;
+
+        }
+
+
+        const data = getMonitoringData();
+
+
+        const newData = {
+
+            id: Date.now(),
+
+            jenis: currentType,
+
+            tanggal: tanggal,
+
+            lokasi: lokasi,
+
+            risiko: risiko,
+
+            kondisi: kondisi,
+
+            hasil: hasil,
+
+            rekomendasi: rekomendasi,
+
+            petugas: petugas,
+
+            status: status
+
+        };
+
+
+        data.push(newData);
+
+
+        localStorage.setItem(
+            "siperkaK3RSData",
+            JSON.stringify(data)
+        );
+
+
+        alert(
+            "Data pemantauan berhasil disimpan."
+        );
+
+
+        updateSummary();
+
+        clearForm();
+
+    }
+
+
+    function clearForm() {
+
+        document.getElementById("lokasi").value = "";
+
+        document.getElementById("risiko").value = "";
+
+        document.getElementById("kondisi").value = "";
+
+        document.getElementById("hasil").value = "";
+
+        document.getElementById("rekomendasi").value = "";
+
+        document.getElementById("petugas").value = "";
+
+        document.getElementById("status").value =
+            "Belum Ditindaklanjuti";
+
+    }
+
+
+    function updateSummary() {
+
+        const data = getMonitoringData();
+
+
+        document.getElementById("totalData")
+            .textContent = data.length;
+
+
+        document.getElementById("lingkunganData")
+            .textContent =
+            data.filter(
+                item => item.jenis === "lingkungan"
+            ).length;
+
+
+        document.getElementById("keamananData")
+            .textContent =
+            data.filter(
+                item => item.jenis === "keamanan"
+            ).length;
+
+
+        document.getElementById("lainData")
+            .textContent =
+            data.filter(
+                item =>
+                    item.jenis === "kebakaran" ||
+                    item.jenis === "keselamatan"
+            ).length;
+
+    }
+
+
+    updateSummary();
+
+</script>
+
+</body>
 </html>
