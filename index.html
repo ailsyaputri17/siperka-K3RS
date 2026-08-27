@@ -1,147 +1,6 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SIPERKASA K3RS</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f7f6;
-            color: #1f2937;
-        }
-
-        header {
-            background: #0b5d3b;
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 32px;
-        }
-
-        header p {
-            margin-top: 10px;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 35px auto;
-            padding: 0 20px;
-        }
-
-        .judul {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-
-        .icon {
-            font-size: 45px;
-        }
-
-        .card h3 {
-            margin: 15px 0 10px;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.5;
-        }
-
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 20px;
-            background: #0b5d3b;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            margin-top: 40px;
-            background: #0b5d3b;
-            color: white;
-        }
-
-        @media (max-width: 700px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            header h1 {
-                font-size: 25px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<header>
-    <h1>SIPERKASA K3RS</h1>
-
-    <p>
-        Sistem Pemantauan Risiko Keselamatan dan Keamanan K3RS
-    </p>
-</header>
-
-<div class="container">
-
-    <div class="judul">
-
-        <h2>Pemantauan Risiko K3RS</h2>
-
-        <p>
-            Silakan pilih jenis pemantauan yang akan dilakukan.
-        </p>
-
-    </div>
-
-    <div class="grid">
-
-        <div class="card">
-
-            <div class="icon">🏥</div>
-
-            <h3>
-                Keselamatan Lingkungan
-            </h3>
-
-            <p>
-                Pemantauan potensi risiko keselamatan
-                lingkungan di area rumah sakit.
-            </p>
-
-            <a href="lingkungan.html"class="btn">
-                Mulai Pemantauan
-            </a>
-
-        </div>
-
+        <!-- 2. KEAMANAN -->
 
         <div class="card">
 
@@ -156,12 +15,14 @@
                 keamanan di lingkungan rumah sakit.
             </p>
 
-            <a href="#" class="btn">
+            <a href="keamanan.html" class="btn">
                 Mulai Pemantauan
             </a>
 
         </div>
 
+
+        <!-- 3. RISIKO KEBAKARAN -->
 
         <div class="card">
 
@@ -176,12 +37,14 @@
                 sarana proteksi dan jalur evakuasi.
             </p>
 
-            <a href="#" class="btn">
+            <a href="kebakaran.html" class="btn">
                 Mulai Pemantauan
             </a>
 
         </div>
 
+
+        <!-- 4. KESELAMATAN -->
 
         <div class="card">
 
@@ -196,15 +59,17 @@
                 dan risiko keselamatan di rumah sakit.
             </p>
 
-            <a href="#" class="btn">
+            <a href="keselamatan.html" class="btn">
                 Mulai Pemantauan
             </a>
 
         </div>
 
+
     </div>
 
-</div>
+</main>
+
 
 <footer>
 
@@ -219,4 +84,5 @@
 </footer>
 
 </body>
+
 </html>
