@@ -2,366 +2,310 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SIPERKA K3RS | Keselamatan Lingkungan</title>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Pemantauan Risiko Keselamatan Lingkungan | SIPERKA K3RS
+    </title>
+
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        * {
+
+        /* ================================
+           TAMBAHAN KHUSUS FORM LINGKUNGAN
+           ================================ */
+
+        .form-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px 50px;
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f3f6fb;
-            color: #1f2937;
-            min-height: 100vh;
-        }
-
-        /* HEADER */
-        .top-header {
-            background: linear-gradient(135deg, #064e3b, #0f766e);
-            color: white;
-            padding: 25px 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
-        }
-
-        .header-inner {
-            max-width: 1050px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .logo-box {
-            width: 65px;
-            height: 65px;
-            background: white;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #047857;
-            font-weight: bold;
-            font-size: 18px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        .header-text h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .header-text p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* CONTAINER */
-        .container {
-            max-width: 1050px;
-            margin: 35px auto;
-            padding: 0 18px;
-        }
-
-        /* BREADCRUMB */
-        .breadcrumb {
-            margin-bottom: 18px;
-            font-size: 14px;
-            color: #64748b;
-        }
-
-        .breadcrumb a {
-            color: #047857;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        /* CARD */
         .form-card {
-            background: white;
+            background: #ffffff;
             border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
-            border: 1px solid #e5e7eb;
+            padding: 35px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
         }
 
-        .form-title {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #e5e7eb;
+        .form-card h2 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #123c36;
         }
 
-        .form-title h2 {
-            color: #064e3b;
-            font-size: 22px;
-            margin-bottom: 7px;
-        }
-
-        .form-title p {
-            color: #64748b;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* SECTION */
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 28px 0 18px;
-            color: #064e3b;
-            font-size: 17px;
-            font-weight: bold;
-        }
-
-        .section-number {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: #d1fae5;
-            color: #047857;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-        }
-
-        /* FORM */
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
+        .form-description {
+            color: #6b7280;
+            margin-bottom: 30px;
         }
 
         .form-group {
-            margin-bottom: 17px;
+            margin-bottom: 20px;
         }
 
-        .full {
-            grid-column: 1 / -1;
-        }
-
-        label {
+        .form-group label {
             display: block;
+            font-weight: 600;
+            color: #263b38;
             margin-bottom: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #334155;
         }
 
         .required {
             color: #dc2626;
         }
 
-        input,
-        textarea,
-        select {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
             width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #cbd5e1;
+            padding: 13px 15px;
+            border: 1px solid #d5ddd9;
             border-radius: 10px;
-            font-size: 14px;
+            font-size: 15px;
             font-family: inherit;
+            box-sizing: border-box;
             outline: none;
-            transition: 0.2s;
             background: #fff;
         }
 
-        input:focus,
-        textarea:focus,
-        select:focus {
-            border-color: #059669;
-            box-shadow: 0 0 0 3px rgba(5,150,105,0.10);
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #176b5c;
+            box-shadow: 0 0 0 3px rgba(23,107,92,0.10);
         }
 
-        textarea {
+        .form-group textarea {
             min-height: 110px;
             resize: vertical;
         }
 
-        /* UPLOAD */
-        .upload-card {
-            border: 2px dashed #cbd5e1;
-            border-radius: 15px;
-            padding: 22px;
-            background: #f8fafc;
-            transition: 0.2s;
+        /* ================================
+           FOTO BEFORE AFTER
+           ================================ */
+
+        .photo-section {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #e5e7eb;
         }
 
-        .upload-card:hover {
-            border-color: #059669;
-            background: #f0fdf4;
-        }
-
-        .upload-icon {
-            font-size: 32px;
+        .photo-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #123c36;
             margin-bottom: 8px;
         }
 
-        .upload-card h3 {
-            font-size: 15px;
-            color: #334155;
-            margin-bottom: 5px;
+        .photo-description {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 20px;
         }
 
-        .upload-card p {
-            font-size: 12px;
-            color: #64748b;
-            margin-bottom: 13px;
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .photo-box {
+            border: 2px dashed #cbd5d1;
+            border-radius: 15px;
+            padding: 20px;
+            background: #f8faf9;
+        }
+
+        .photo-box h3 {
+            margin-top: 0;
+            color: #263b38;
+            font-size: 16px;
+        }
+
+        .photo-box input[type="file"] {
+            border: none;
+            padding: 10px 0;
+            background: transparent;
         }
 
         .preview {
             display: none;
-            margin-top: 15px;
-        }
-
-        .preview img {
             width: 100%;
-            max-height: 230px;
+            max-height: 250px;
             object-fit: cover;
-            border-radius: 10px;
-            border: 1px solid #d1d5db;
+            margin-top: 15px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
         }
 
-        /* STATUS */
+        /* ================================
+           BUTTON
+           ================================ */
+
+        .btn-submit {
+            width: 100%;
+            margin-top: 30px;
+            padding: 15px;
+            border: none;
+            border-radius: 11px;
+            background: #126653;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: #0d5142;
+        }
+
+        .btn-submit:disabled {
+            background: #94a3a8;
+            cursor: not-allowed;
+        }
+
+        .btn-back {
+            display: block;
+            text-align: center;
+            margin-top: 18px;
+            color: #126653;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ================================
+           STATUS
+           ================================ */
+
         .status-box {
             display: none;
-            padding: 14px;
+            margin-top: 20px;
+            padding: 15px;
             border-radius: 10px;
-            margin: 20px 0;
             font-size: 14px;
             line-height: 1.5;
         }
 
         .status-loading {
-            background: #eff6ff;
-            color: #1d4ed8;
+            display: block;
+            background: #fff7ed;
+            color: #9a3412;
         }
 
         .status-success {
+            display: block;
             background: #ecfdf5;
-            color: #047857;
+            color: #166534;
         }
 
         .status-error {
+            display: block;
             background: #fef2f2;
-            color: #b91c1c;
+            color: #991b1b;
         }
 
-        /* BUTTON */
-        .button-area {
-            margin-top: 28px;
+        /* ================================
+           HEADER
+           ================================ */
+
+        .header {
+            background: linear-gradient(
+                135deg,
+                #0f513f,
+                #176b5c
+            );
+            color: white;
+            padding: 25px 20px;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: auto;
             display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
         }
 
-        .btn {
-            border: none;
-            border-radius: 11px;
-            padding: 13px 22px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.15);
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            transition: 0.2s;
+            font-weight: 800;
+            font-size: 16px;
         }
 
-        .btn-submit {
-            background: #047857;
-            color: white;
-            flex: 1;
+        .header h1 {
+            margin: 0;
+            font-size: 26px;
         }
 
-        .btn-submit:hover {
-            background: #065f46;
-            transform: translateY(-1px);
+        .header p {
+            margin: 5px 0 0;
+            opacity: 0.9;
         }
 
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
+        /* ================================
+           RESPONSIVE
+           ================================ */
 
-        .btn-back {
-            background: #e2e8f0;
-            color: #334155;
-        }
-
-        .btn-back:hover {
-            background: #cbd5e1;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 25px 15px;
-            color: #64748b;
-            font-size: 12px;
-        }
-
-        /* MOBILE */
         @media (max-width: 700px) {
 
-            .header-inner {
-                align-items: flex-start;
-            }
-
-            .header-text h1 {
-                font-size: 19px;
-            }
-
-            .form-card {
-                padding: 20px;
-            }
-
-            .form-grid {
+            .photo-grid {
                 grid-template-columns: 1fr;
             }
 
-            .full {
-                grid-column: auto;
+            .form-card {
+                padding: 22px;
             }
 
-            .button-area {
-                flex-direction: column;
+            .header h1 {
+                font-size: 21px;
             }
 
-            .btn {
-                width: 100%;
-            }
         }
+
     </style>
+
 </head>
 
 
 <body>
 
-<!-- HEADER -->
-<header class="top-header">
 
-    <div class="header-inner">
+<!-- =========================================
+     HEADER
+========================================= -->
 
-        <div class="logo-box">
+<header class="header">
+
+    <div class="header-content">
+
+        <div class="logo">
             K3RS
         </div>
 
-        <div class="header-text">
+        <div>
 
-            <h1>SIPERKA K3RS</h1>
+            <h1>
+                Pemantauan Risiko
+            </h1>
 
             <p>
-                Sistem Pemantauan Risiko Keselamatan dan Kesehatan Kerja Rumah Sakit
+                Keselamatan Lingkungan
             </p>
 
         </div>
@@ -371,281 +315,172 @@
 </header>
 
 
-<main class="container">
+<!-- =========================================
+     FORM
+========================================= -->
 
-    <!-- BREADCRUMB -->
-
-    <div class="breadcrumb">
-        <a href="index.html">← Beranda</a>
-        &nbsp; / &nbsp;
-        Keselamatan Lingkungan
-    </div>
-
-
-    <!-- FORM CARD -->
+<main class="form-container">
 
     <div class="form-card">
 
-        <div class="form-title">
+        <h2>
+            Formulir Pemantauan Risiko Keselamatan Lingkungan
+        </h2>
 
-            <h2>
-                Pemantauan Keselamatan Lingkungan
-            </h2>
-
-            <p>
-                Formulir digital untuk mendokumentasikan hasil pemantauan
-                kondisi lingkungan, fasilitas, sarana dan prasarana
-                di lingkungan rumah sakit.
-            </p>
-
-        </div>
+        <p class="form-description">
+            Lengkapi data pemantauan dan dokumentasi kondisi
+            sebelum serta sesudah dilakukan perbaikan.
+        </p>
 
 
-        <!-- DATA PEMANTAUAN -->
-
-        <div class="section-title">
-
-            <span class="section-number">1</span>
-
-            Data Pemantauan
-
-        </div>
-
-
-        <div class="form-grid">
-
-            <div class="form-group">
-
-                <label for="tanggal">
-                    Tanggal Pemantauan <span class="required">*</span>
-                </label>
-
-                <input
-                    type="date"
-                    id="tanggal"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="petugas">
-                    Nama Petugas <span class="required">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="petugas"
-                    placeholder="Nama petugas/pemantau"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="unit">
-                    Unit / Instalasi <span class="required">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="unit"
-                    placeholder="Contoh: Instalasi Gizi"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="lokasi">
-                    Area / Lokasi <span class="required">*</span>
-                </label>
-
-                <input
-                    type="text"
-                    id="lokasi"
-                    placeholder="Contoh: Koridor Gedung Teratai"
-                    required
-                >
-
-            </div>
-
-        </div>
-
-
-        <!-- TEMUAN -->
-
-        <div class="section-title">
-
-            <span class="section-number">2</span>
-
-            Identifikasi Temuan
-
-        </div>
-
+        <!-- TANGGAL -->
 
         <div class="form-group">
 
-            <label for="kategori">
-                Kategori Temuan <span class="required">*</span>
+            <label for="tanggal">
+                Tanggal Pemantauan
+                <span class="required">*</span>
             </label>
 
-            <select id="kategori" required>
-
-                <option value="">
-                    -- Pilih kategori --
-                </option>
-
-                <option value="Kondisi Lingkungan">
-                    Kondisi Lingkungan
-                </option>
-
-                <option value="Fasilitas">
-                    Fasilitas
-                </option>
-
-                <option value="Sarana dan Prasarana">
-                    Sarana dan Prasarana
-                </option>
-
-                <option value="Kebersihan">
-                    Kebersihan
-                </option>
-
-                <option value="Lainnya">
-                    Lainnya
-                </option>
-
-            </select>
+            <input
+                type="date"
+                id="tanggal"
+                required
+            >
 
         </div>
 
+
+        <!-- PETUGAS -->
+
+        <div class="form-group">
+
+            <label for="petugas">
+                Nama Petugas
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="petugas"
+                placeholder="Masukkan nama petugas"
+                required
+            >
+
+        </div>
+
+
+        <!-- UNIT -->
+
+        <div class="form-group">
+
+            <label for="unit">
+                Unit / Bagian
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="unit"
+                placeholder="Contoh: Instalasi Gizi"
+                required
+            >
+
+        </div>
+
+
+        <!-- LOKASI -->
+
+        <div class="form-group">
+
+            <label for="lokasi">
+                Area / Lokasi
+                <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="lokasi"
+                placeholder="Contoh: Koridor Gedung A"
+                required
+            >
+
+        </div>
+
+
+        <!-- RISIKO -->
 
         <div class="form-group">
 
             <label for="risiko">
-                Potensi Risiko / Temuan <span class="required">*</span>
+                Potensi Risiko Keselamatan
+                <span class="required">*</span>
             </label>
 
             <textarea
                 id="risiko"
-                placeholder="Jelaskan kondisi atau potensi risiko yang ditemukan..."
+                placeholder="Tuliskan potensi risiko yang ditemukan"
                 required
             ></textarea>
 
         </div>
 
 
-        <div class="form-grid">
+        <!-- DAMPAK -->
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <label for="dampak">
-                    Dampak yang Mungkin Terjadi
-                    <span class="required">*</span>
-                </label>
+            <label for="dampak">
+                Dampak
+                <span class="required">*</span>
+            </label>
 
-                <textarea
-                    id="dampak"
-                    placeholder="Contoh: Risiko terpeleset, tersandung, atau cedera..."
-                    required
-                ></textarea>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="hasil">
-                    Hasil Pemantauan
-                    <span class="required">*</span>
-                </label>
-
-                <textarea
-                    id="hasil"
-                    placeholder="Tuliskan hasil observasi..."
-                    required
-                ></textarea>
-
-            </div>
-
-        </div>
-
-
-        <!-- BEFORE -->
-
-        <div class="section-title">
-
-            <span class="section-number">3</span>
-
-            Dokumentasi Kondisi Sebelum Perbaikan
-
-        </div>
-
-
-        <div class="upload-card">
-
-            <div class="upload-icon">
-                📷
-            </div>
-
-            <h3>
-                Foto Before
-            </h3>
-
-            <p>
-                Unggah foto kondisi/temuan sebelum dilakukan perbaikan.
-            </p>
-
-            <input
-                type="file"
-                id="fotoBefore"
-                accept="image/*"
-                onchange="previewFoto('fotoBefore','previewBefore')"
-            >
-
-            <div
-                class="preview"
-                id="previewBefore"
-            >
-                <img id="imgBefore" alt="Preview foto before">
-            </div>
+            <textarea
+                id="dampak"
+                placeholder="Tuliskan dampak yang mungkin terjadi"
+                required
+            ></textarea>
 
         </div>
 
 
         <!-- PENGENDALIAN -->
 
-        <div class="section-title">
-
-            <span class="section-number">4</span>
-
-            Tindakan Pengendalian
-
-        </div>
-
-
         <div class="form-group">
 
             <label for="pengendalian">
-                Tindakan / Perbaikan yang Dilakukan
+                Pengendalian
                 <span class="required">*</span>
             </label>
 
             <textarea
                 id="pengendalian"
-                placeholder="Tuliskan tindakan pengendalian atau perbaikan..."
+                placeholder="Tuliskan pengendalian yang sudah dilakukan"
                 required
             ></textarea>
 
         </div>
 
+
+        <!-- HASIL -->
+
+        <div class="form-group">
+
+            <label for="hasil">
+                Hasil Pemantauan
+                <span class="required">*</span>
+            </label>
+
+            <textarea
+                id="hasil"
+                placeholder="Tuliskan hasil pemantauan"
+                required
+            ></textarea>
+
+        </div>
+
+
+        <!-- REKOMENDASI -->
 
         <div class="form-group">
 
@@ -656,50 +491,88 @@
 
             <textarea
                 id="rekomendasi"
-                placeholder="Tuliskan rekomendasi tindak lanjut..."
+                placeholder="Tuliskan rekomendasi perbaikan"
                 required
             ></textarea>
 
         </div>
 
 
-        <!-- AFTER -->
+        <!-- =====================================
+             DOKUMENTASI FOTO
+        ====================================== -->
 
-        <div class="section-title">
+        <div class="photo-section">
 
-            <span class="section-number">5</span>
-
-            Dokumentasi Kondisi Setelah Perbaikan
-
-        </div>
-
-
-        <div class="upload-card">
-
-            <div class="upload-icon">
-                📸
+            <div class="photo-title">
+                📷 Dokumentasi Kondisi
             </div>
 
-            <h3>
-                Foto After
-            </h3>
+            <div class="photo-description">
+                Upload foto kondisi sebelum dan sesudah
+                dilakukan tindakan perbaikan.
+            </div>
 
-            <p>
-                Unggah foto kondisi setelah dilakukan tindakan perbaikan.
-            </p>
 
-            <input
-                type="file"
-                id="fotoAfter"
-                accept="image/*"
-                onchange="previewFoto('fotoAfter','previewAfter')"
-            >
+            <div class="photo-grid">
 
-            <div
-                class="preview"
-                id="previewAfter"
-            >
-                <img id="imgAfter" alt="Preview foto after">
+
+                <!-- FOTO BEFORE -->
+
+                <div class="photo-box">
+
+                    <h3>
+                        📸 Foto Before
+                    </h3>
+
+                    <p>
+                        Kondisi sebelum dilakukan perbaikan.
+                    </p>
+
+                    <input
+                        type="file"
+                        id="fotoBefore"
+                        accept="image/*"
+                        onchange="previewFoto('fotoBefore','previewBefore')"
+                    >
+
+                    <img
+                        id="previewBefore"
+                        class="preview"
+                        alt="Preview Foto Before"
+                    >
+
+                </div>
+
+
+                <!-- FOTO AFTER -->
+
+                <div class="photo-box">
+
+                    <h3>
+                        📸 Foto After
+                    </h3>
+
+                    <p>
+                        Kondisi setelah dilakukan perbaikan.
+                    </p>
+
+                    <input
+                        type="file"
+                        id="fotoAfter"
+                        accept="image/*"
+                        onchange="previewFoto('fotoAfter','previewAfter')"
+                    >
+
+                    <img
+                        id="previewAfter"
+                        class="preview"
+                        alt="Preview Foto After"
+                    >
+
+                </div>
+
+
             </div>
 
         </div>
@@ -713,125 +586,109 @@
         ></div>
 
 
-        <!-- BUTTON -->
+        <!-- TOMBOL SIMPAN -->
 
-        <div class="button-area">
+        <button
+            type="button"
+            id="btnSimpan"
+            class="btn-submit"
+            onclick="simpanPemantauan()"
+        >
 
-            <button
-                type="button"
-                id="btnSubmit"
-                class="btn btn-submit"
-                onclick="simpanPemantauan()"
-            >
+            SIMPAN PEMANTAUAN
 
-                💾 Simpan Hasil Pemantauan
-
-            </button>
+        </button>
 
 
-            <a
-                href="index.html"
-                class="btn btn-back"
-            >
+        <!-- KEMBALI -->
 
-                ← Kembali
+        <a
+            href="index.html"
+            class="btn-back"
+        >
 
-            </a>
+            ← Kembali ke Halaman Utama
 
-        </div>
+        </a>
+
 
     </div>
 
 </main>
 
 
-<footer>
-
-    SIPERKA K3RS &nbsp;|&nbsp;
-    Sistem Pemantauan Risiko K3RS
-    <br>
-    RSUD Dr. Moewardi
-
-</footer>
-
-
 <script>
 
-    /*
-     * URL GOOGLE APPS SCRIPT
-     */
+/* ==========================================
+   URL GOOGLE APPS SCRIPT
+========================================== */
 
-    const SCRIPT_URL =
-        "https://script.google.com/macros/s/AKfycbzDROHr930UDtsF5iWHzIbLKwDItsuZbtQqCNerEKAGHwdDj6B8uk0Xox4LziT-_eIhsw/exec";
-
-
-    /*
-     * PREVIEW FOTO
-     */
-
-    function previewFoto(inputId, previewId) {
-
-        const input =
-            document.getElementById(inputId);
-
-        const preview =
-            document.getElementById(previewId);
-
-        const img =
-            preview.querySelector("img");
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzDROHr930UDtsF5iWHzIbLKwDItsuZbtQqCNerEKAGHwdDj6B8uk0Xox4LziT-_eIhsw/exec";
 
 
-        if (!input.files || !input.files[0]) {
+/* ==========================================
+   PREVIEW FOTO
+========================================== */
 
-            preview.style.display = "none";
+function previewFoto(inputId, previewId) {
 
-            return;
-        }
+    const input =
+        document.getElementById(inputId);
 
+    const preview =
+        document.getElementById(previewId);
 
-        const file =
-            input.files[0];
+    if (!input.files || !input.files[0]) {
 
+        preview.style.display = "none";
 
-        if (!file.type.startsWith("image/")) {
-
-            alert("File harus berupa gambar.");
-
-            input.value = "";
-
-            preview.style.display = "none";
-
-            return;
-        }
-
-
-        const reader =
-            new FileReader();
-
-
-        reader.onload = function(e) {
-
-            img.src =
-                e.target.result;
-
-            preview.style.display =
-                "block";
-
-        };
-
-
-        reader.readAsDataURL(file);
-
+        return;
     }
 
+    const file = input.files[0];
 
-    /*
-     * UBAH FOTO MENJADI BASE64
-     */
+    /* Batas ukuran 5 MB */
 
-    function fileToBase64(file) {
+    if (file.size > 5 * 1024 * 1024) {
 
-        return new Promise(function(resolve, reject) {
+        alert(
+            "Ukuran foto terlalu besar. " +
+            "Maksimal 5 MB per foto."
+        );
+
+        input.value = "";
+
+        preview.style.display = "none";
+
+        return;
+    }
+
+    const reader =
+        new FileReader();
+
+    reader.onload = function(event) {
+
+        preview.src =
+            event.target.result;
+
+        preview.style.display =
+            "block";
+
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+/* ==========================================
+   FILE → BASE64
+========================================== */
+
+function fileToBase64(file) {
+
+    return new Promise(
+        (resolve, reject) => {
 
             if (!file) {
 
@@ -840,408 +697,338 @@
                 return;
             }
 
-
             const reader =
                 new FileReader();
 
-
             reader.onload = function() {
 
-                resolve(reader.result);
+                /*
+                 * Hapus bagian:
+                 * data:image/jpeg;base64,
+                 */
+
+                const result =
+                    reader.result;
+
+                const base64 =
+                    result.split(",")[1];
+
+                resolve(base64);
 
             };
 
-
-            reader.onerror = function(error) {
-
-                reject(error);
-
-            };
-
+            reader.onerror =
+                reject;
 
             reader.readAsDataURL(file);
 
-        });
+        }
+    );
+}
 
+
+/* ==========================================
+   TAMPILKAN STATUS
+========================================== */
+
+function tampilkanStatus(
+    pesan,
+    tipe
+) {
+
+    const box =
+        document.getElementById("statusBox");
+
+    box.className =
+        "status-box";
+
+    box.classList.add(
+        "status-" + tipe
+    );
+
+    box.innerHTML =
+        pesan;
+
+}
+
+
+/* ==========================================
+   SIMPAN PEMANTAUAN
+========================================== */
+
+async function simpanPemantauan() {
+
+    const tanggal =
+        document.getElementById("tanggal").value;
+
+    const petugas =
+        document.getElementById("petugas").value.trim();
+
+    const unit =
+        document.getElementById("unit").value.trim();
+
+    const lokasi =
+        document.getElementById("lokasi").value.trim();
+
+    const risiko =
+        document.getElementById("risiko").value.trim();
+
+    const dampak =
+        document.getElementById("dampak").value.trim();
+
+    const pengendalian =
+        document.getElementById("pengendalian").value.trim();
+
+    const hasil =
+        document.getElementById("hasil").value.trim();
+
+    const rekomendasi =
+        document.getElementById("rekomendasi").value.trim();
+
+
+    const fotoBeforeInput =
+        document.getElementById("fotoBefore");
+
+    const fotoAfterInput =
+        document.getElementById("fotoAfter");
+
+
+    /* ======================================
+       VALIDASI
+    ====================================== */
+
+    if (
+        !tanggal ||
+        !petugas ||
+        !unit ||
+        !lokasi ||
+        !risiko ||
+        !dampak ||
+        !pengendalian ||
+        !hasil ||
+        !rekomendasi
+    ) {
+
+        tampilkanStatus(
+            "⚠️ Mohon lengkapi seluruh data wajib terlebih dahulu.",
+            "error"
+        );
+
+        return;
     }
 
 
-    /*
-     * SIMPAN DATA
-     */
+    /* ======================================
+       CEK FOTO
+    ====================================== */
 
-    async function simpanPemantauan() {
+    const fotoBefore =
+        fotoBeforeInput.files[0];
 
-        const tanggal =
-            document.getElementById("tanggal").value;
-
-        const petugas =
-            document.getElementById("petugas").value.trim();
-
-        const unit =
-            document.getElementById("unit").value.trim();
-
-        const lokasi =
-            document.getElementById("lokasi").value.trim();
-
-        const kategori =
-            document.getElementById("kategori").value;
-
-        const risiko =
-            document.getElementById("risiko").value.trim();
-
-        const dampak =
-            document.getElementById("dampak").value.trim();
-
-        const hasil =
-            document.getElementById("hasil").value.trim();
-
-        const pengendalian =
-            document.getElementById("pengendalian").value.trim();
-
-        const rekomendasi =
-            document.getElementById("rekomendasi").value.trim();
+    const fotoAfter =
+        fotoAfterInput.files[0];
 
 
-        const fotoBefore =
-            document.getElementById("fotoBefore").files[0];
-
-        const fotoAfter =
-            document.getElementById("fotoAfter").files[0];
-
-
-        /*
-         * VALIDASI
-         */
-
-        if (
-            !tanggal ||
-            !petugas ||
-            !unit ||
-            !lokasi ||
-            !kategori ||
-            !risiko ||
-            !dampak ||
-            !hasil ||
-            !pengendalian ||
-            !rekomendasi
-        ) {
-
-            tampilkanStatus(
-                "Mohon lengkapi seluruh data yang wajib diisi.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        /*
-         * FOTO WAJIB
-         */
-
-        if (!fotoBefore) {
-
-            tampilkanStatus(
-                "Mohon unggah Foto Before terlebih dahulu.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        if (!fotoAfter) {
-
-            tampilkanStatus(
-                "Mohon unggah Foto After terlebih dahulu.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        /*
-         * TOMBOL LOADING
-         */
-
-        const button =
-            document.getElementById("btnSubmit");
-
-        button.disabled = true;
-
-        button.innerHTML =
-            "⏳ Menyimpan data...";
-
+    if (!fotoBefore || !fotoAfter) {
 
         tampilkanStatus(
-            "Data sedang dikirim. Mohon tunggu...",
-            "loading"
+            "⚠️ Mohon upload Foto Before dan Foto After.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    /* ======================================
+       NONAKTIFKAN TOMBOL
+    ====================================== */
+
+    const tombol =
+        document.getElementById("btnSimpan");
+
+    tombol.disabled =
+        true;
+
+    tombol.innerHTML =
+        "⏳ Sedang menyimpan data...";
+
+
+    tampilkanStatus(
+        "⏳ Data sedang dikirim ke sistem. Mohon jangan menutup halaman...",
+        "loading"
+    );
+
+
+    try {
+
+        /* ==================================
+           KONVERSI FOTO
+        ================================== */
+
+        const beforeBase64 =
+            await fileToBase64(
+                fotoBefore
+            );
+
+        const afterBase64 =
+            await fileToBase64(
+                fotoAfter
+            );
+
+
+        /* ==================================
+           DATA YANG DIKIRIM
+        ================================== */
+
+        const data = {
+
+            jenis:
+                "Keselamatan Lingkungan",
+
+            tanggal:
+                tanggal,
+
+            petugas:
+                petugas,
+
+            unit:
+                unit,
+
+            lokasi:
+                lokasi,
+
+            risiko:
+                risiko,
+
+            dampak:
+                dampak,
+
+            pengendalian:
+                pengendalian,
+
+            hasil:
+                hasil,
+
+            rekomendasi:
+                rekomendasi,
+
+
+            /* FOTO BEFORE */
+
+            fotoBefore:
+                beforeBase64,
+
+            namaFotoBefore:
+                fotoBefore.name,
+
+            tipeFotoBefore:
+                fotoBefore.type,
+
+
+            /* FOTO AFTER */
+
+            fotoAfter:
+                afterBase64,
+
+            namaFotoAfter:
+                fotoAfter.name,
+
+            tipeFotoAfter:
+                fotoAfter.type
+
+        };
+
+
+        /* ==================================
+           KIRIM KE GOOGLE APPS SCRIPT
+        ================================== */
+
+        await fetch(
+            SCRIPT_URL,
+            {
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+                    "Content-Type":
+                        "text/plain;charset=utf-8"
+                },
+
+                body:
+                    JSON.stringify(data)
+            }
         );
 
 
-        try {
+        /* ==================================
+           BERHASIL DIKIRIM
+        ================================== */
+
+        tampilkanStatus(
+            "✅ Data pemantauan berhasil dikirim ke sistem.<br>" +
+            "Data akan tercatat pada Google Sheet dan " +
+            "dokumentasi foto tersimpan di Google Drive.",
+            "success"
+        );
+
+
+        /* ==================================
+           RESET FORM
+        ================================== */
+
+        document.getElementById("tanggal").value = "";
+        document.getElementById("petugas").value = "";
+        document.getElementById("unit").value = "";
+        document.getElementById("lokasi").value = "";
+        document.getElementById("risiko").value = "";
+        document.getElementById("dampak").value = "";
+        document.getElementById("pengendalian").value = "";
+        document.getElementById("hasil").value = "";
+        document.getElementById("rekomendasi").value = "";
+
+        fotoBeforeInput.value = "";
+        fotoAfterInput.value = "";
+
+        document.getElementById(
+            "previewBefore"
+        ).style.display = "none";
+
+        document.getElementById(
+            "previewAfter"
+        ).style.display = "none";
 
-            /*
-             * KONVERSI FOTO
-             */
-
-            const beforeBase64 =
-                await fileToBase64(fotoBefore);
-
-            const afterBase64 =
-                await fileToBase64(fotoAfter);
-
-
-            /*
-             * DATA YANG DIKIRIM
-             */
-
-            const data = {
-
-                action: "simpanPemantauan",
-
-                jenisPemantauan:
-                    "Keselamatan Lingkungan",
-
-                tanggal:
-                    tanggal,
-
-                petugas:
-                    petugas,
-
-                unit:
-                    unit,
-
-                lokasi:
-                    lokasi,
-
-                kategori:
-                    kategori,
-
-                risiko:
-                    risiko,
-
-                dampak:
-                    dampak,
-
-                hasil:
-                    hasil,
-
-                pengendalian:
-                    pengendalian,
-
-                rekomendasi:
-                    rekomendasi,
-
-                fotoBefore:
-                    beforeBase64,
-
-                namaFotoBefore:
-                    fotoBefore.name,
-
-                fotoAfter:
-                    afterBase64,
-
-                namaFotoAfter:
-                    fotoAfter.name
-
-            };
-
-
-            /*
-             * KIRIM KE GOOGLE APPS SCRIPT
-             */
-
-            const response =
-                await fetch(
-                    SCRIPT_URL,
-                    {
-
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type":
-                                "text/plain;charset=utf-8"
-                        },
-
-                        body:
-                            JSON.stringify(data)
-
-                    }
-                );
-
-
-            const result =
-                await response.json();
-
-
-            if (
-                result.status === "success"
-            ) {
-
-                tampilkanStatus(
-                    "✅ Data pemantauan berhasil disimpan ke sistem.",
-                    "success"
-                );
-
-
-                button.innerHTML =
-                    "✅ Data Berhasil Disimpan";
-
-
-                /*
-                 * RESET FORM
-                 */
-
-                document
-                    .getElementById("tanggal")
-                    .value = "";
-
-                document
-                    .getElementById("petugas")
-                    .value = "";
-
-                document
-                    .getElementById("unit")
-                    .value = "";
-
-                document
-                    .getElementById("lokasi")
-                    .value = "";
-
-                document
-                    .getElementById("kategori")
-                    .value = "";
-
-                document
-                    .getElementById("risiko")
-                    .value = "";
-
-                document
-                    .getElementById("dampak")
-                    .value = "";
-
-                document
-                    .getElementById("hasil")
-                    .value = "";
-
-                document
-                    .getElementById("pengendalian")
-                    .value = "";
-
-                document
-                    .getElementById("rekomendasi")
-                    .value = "";
-
-                document
-                    .getElementById("fotoBefore")
-                    .value = "";
-
-                document
-                    .getElementById("fotoAfter")
-                    .value = "";
-
-                document
-                    .getElementById("previewBefore")
-                    .style.display = "none";
-
-                document
-                    .getElementById("previewAfter")
-                    .style.display = "none";
-
-
-            } else {
-
-                throw new Error(
-                    result.message ||
-                    "Data gagal disimpan."
-                );
-
-            }
-
-
-        } catch (error) {
-
-            console.error(error);
-
-
-            tampilkanStatus(
-                "❌ Data belum berhasil dikirim. Pastikan koneksi internet dan konfigurasi Google Apps Script sudah benar.",
-                "error"
-            );
-
-
-            button.disabled = false;
-
-            button.innerHTML =
-                "💾 Simpan Hasil Pemantauan";
-
-        }
 
     }
 
+    catch (error) {
 
-    /*
-     * STATUS
-     */
+        console.error(error);
 
-    function tampilkanStatus(
-        pesan,
-        tipe
-    ) {
-
-        const box =
-            document.getElementById("statusBox");
-
-
-        box.className =
-            "status-box";
-
-
-        if (tipe === "success") {
-
-            box.classList.add(
-                "status-success"
-            );
-
-        }
-
-        else if (tipe === "error") {
-
-            box.classList.add(
-                "status-error"
-            );
-
-        }
-
-        else {
-
-            box.classList.add(
-                "status-loading"
-            );
-
-        }
-
-
-        box.innerHTML =
-            pesan;
-
-
-        box.style.display =
-            "block";
-
-
-        box.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
+        tampilkanStatus(
+            "❌ Terjadi kesalahan saat mengirim data. " +
+            "Silakan coba kembali.",
+            "error"
+        );
 
     }
+
+    finally {
+
+        tombol.disabled =
+            false;
+
+        tombol.innerHTML =
+            "SIMPAN PEMANTAUAN";
+
+    }
+
+}
 
 </script>
 
 
 </body>
+
 </html>
