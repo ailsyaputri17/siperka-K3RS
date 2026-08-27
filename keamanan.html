@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pemantauan Risiko Keamanan K3RS</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<header class="header">
+
+    <div class="header-content">
+
+        <div class="logo">
+            K3RS
+        </div>
+
+        <div>
+
+            <h1>
+                Pemantauan Risiko
+            </h1>
+
+            <p>
+                Keamanan
+            </p>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="form-container">
+
+    <div class="form-card">
+
+        <h2>
+            Formulir Pemantauan Risiko Keamanan
+        </h2>
+
+        <p class="form-description">
+            Silakan lengkapi data pemantauan dengan benar.
+        </p>
+
+
+        <form onsubmit="simpanPemantauan(event)">
+
+
+            <div class="form-group">
+
+                <label>
+                    Tanggal Pemantauan *
+                </label>
+
+                <input
+                    type="date"
+                    id="tanggal"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Nama Petugas *
+                </label>
+
+                <input
+                    type="text"
+                    id="petugas"
+                    placeholder="Masukkan nama petugas"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Unit / Bagian *
+                </label>
+
+                <input
+                    type="text"
+                    id="unit"
+                    placeholder="Masukkan unit atau bagian"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Area / Lokasi *
+                </label>
+
+                <input
+                    type="text"
+                    id="lokasi"
+                    placeholder="Contoh: IGD, rawat inap, parkir"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Potensi Risiko Keselamatan *
+                </label>
+
+                <textarea
+                    id="risiko"
+                    placeholder="Tuliskan potensi risiko keamanan yang ditemukan"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Dampak *
+                </label>
+
+                <textarea
+                    id="dampak"
+                    placeholder="Tuliskan dampak yang mungkin terjadi"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Pengendalian *
+                </label>
+
+                <textarea
+                    id="pengendalian"
+                    placeholder="Tuliskan pengendalian yang sudah dilakukan"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Hasil Pemantauan *
+                </label>
+
+                <textarea
+                    id="hasil"
+                    placeholder="Tuliskan hasil pemantauan"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Rekomendasi *
+                </label>
+
+                <textarea
+                    id="rekomendasi"
+                    placeholder="Tuliskan rekomendasi perbaikan"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn-submit">
+
+                SIMPAN PEMANTAUAN
+
+            </button>
+
+
+        </form>
+
+
+        <a
+            href="index.html"
+            class="btn-back">
+
+            ← Kembali ke Halaman Utama
+
+        </a>
+
+
+    </div>
+
+</main>
+
+
+<script>
+
+function simpanPemantauan(event) {
+
+    event.preventDefault();
+
+    alert(
+        "Data pemantauan keamanan berhasil diisi."
+    );
+
+}
+
+</script>
+
+
+</body>
+
+</html>
