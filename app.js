@@ -1,5 +1,6 @@
-let jenisPemantauan = "";
+const API_URL = "https://script.google.com/macros/s/AKfycbz1nycX19ifnXNmctHzX4kvP2hGn6Kbm7XGdCsR5keHEvfMFrJmKDcJenCcEjY2lrDX/exec";
 
+let jenisPemantauan = "";
 
 function pilihPemantauan(jenis) {
 
@@ -150,20 +151,49 @@ document.getElementById(
         };
 
 
-        console.log(
-            "Data pemantauan:",
-            data
-        );
+        try {
 
+    const response = await fetch(API_URL, {
+        method: "POST",
+
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(data)
+    });
+
+    const hasil = await response.json();
+
+    console.log("Respons server:", hasil);
+
+    if (hasil.status === "success") {
 
         document.getElementById(
             "formSection"
         ).classList.add("hidden");
 
-
         document.getElementById(
             "successMessage"
         ).classList.remove("hidden");
 
+        alert(
+            "Data pemantauan berhasil disimpan!"
+        );
+
+    } else {
+
+        alert(
+            "Data gagal disimpan: " +
+            hasil.message
+        );
     }
-);
+
+} catch (error) {
+
+    console.error(error);
+
+    alert(
+        "Gagal menghubungkan ke database."
+    );
+}
