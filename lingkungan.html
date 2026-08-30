@@ -11,271 +11,92 @@
     >
 
     <title>
-        Pemantauan Risiko Keselamatan Lingkungan | SIPERKA K3RS
+        Pemantauan Risiko Keselamatan Lingkungan
     </title>
 
     <link rel="stylesheet" href="style.css">
 
     <style>
 
-        /* ================================
-           TAMBAHAN KHUSUS FORM LINGKUNGAN
-           ================================ */
+        /* ==============================
+           TAMBAHAN STYLE FORM
+           ============================== */
 
-        .form-container {
+        .photo-section {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #f7f9fb;
+            border: 1px solid #e1e5e8;
+        }
+
+        .photo-section h3 {
+            margin-top: 0;
+            margin-bottom: 6px;
+        }
+
+        .photo-section p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .photo-group {
+            margin-bottom: 18px;
+        }
+
+        .photo-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .photo-group input[type="file"] {
             width: 100%;
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 20px 50px;
+            padding: 10px;
             box-sizing: border-box;
         }
 
-        .form-card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 35px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-        }
-
-        .form-card h2 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            color: #123c36;
-        }
-
-        .form-description {
-            color: #6b7280;
-            margin-bottom: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 600;
-            color: #263b38;
-            margin-bottom: 8px;
+        .photo-preview {
+            display: none;
+            margin-top: 10px;
+            max-width: 250px;
+            max-height: 200px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            object-fit: cover;
         }
 
         .required {
-            color: #dc2626;
+            color: red;
         }
 
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 13px 15px;
-            border: 1px solid #d5ddd9;
-            border-radius: 10px;
-            font-size: 15px;
-            font-family: inherit;
-            box-sizing: border-box;
-            outline: none;
-            background: #fff;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: #176b5c;
-            box-shadow: 0 0 0 3px rgba(23,107,92,0.10);
-        }
-
-        .form-group textarea {
-            min-height: 110px;
-            resize: vertical;
-        }
-
-        /* ================================
-           FOTO BEFORE AFTER
-           ================================ */
-
-        .photo-section {
-            margin-top: 30px;
-            padding-top: 25px;
-            border-top: 1px solid #e5e7eb;
-        }
-
-        .photo-title {
-            font-size: 18px;
-            font-weight: 700;
-            color: #123c36;
-            margin-bottom: 8px;
-        }
-
-        .photo-description {
-            font-size: 14px;
-            color: #6b7280;
-            margin-bottom: 20px;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-
-        .photo-box {
-            border: 2px dashed #cbd5d1;
-            border-radius: 15px;
-            padding: 20px;
-            background: #f8faf9;
-        }
-
-        .photo-box h3 {
-            margin-top: 0;
-            color: #263b38;
-            font-size: 16px;
-        }
-
-        .photo-box input[type="file"] {
-            border: none;
-            padding: 10px 0;
-            background: transparent;
-        }
-
-        .preview {
+        .status-message {
             display: none;
-            width: 100%;
-            max-height: 250px;
-            object-fit: cover;
             margin-top: 15px;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-        }
-
-        /* ================================
-           BUTTON
-           ================================ */
-
-        .btn-submit {
-            width: 100%;
-            margin-top: 30px;
-            padding: 15px;
-            border: none;
-            border-radius: 11px;
-            background: #126653;
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn-submit:hover {
-            background: #0d5142;
-        }
-
-        .btn-submit:disabled {
-            background: #94a3a8;
-            cursor: not-allowed;
-        }
-
-        .btn-back {
-            display: block;
-            text-align: center;
-            margin-top: 18px;
-            color: #126653;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* ================================
-           STATUS
-           ================================ */
-
-        .status-box {
-            display: none;
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 10px;
+            padding: 12px;
+            border-radius: 8px;
             font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .status-loading {
-            display: block;
-            background: #fff7ed;
-            color: #9a3412;
         }
 
         .status-success {
-            display: block;
-            background: #ecfdf5;
-            color: #166534;
+            background: #e8f5e9;
+            color: #2e7d32;
         }
 
         .status-error {
-            display: block;
-            background: #fef2f2;
-            color: #991b1b;
+            background: #ffebee;
+            color: #c62828;
         }
 
-        /* ================================
-           HEADER
-           ================================ */
-
-        .header {
-            background: linear-gradient(
-                135deg,
-                #0f513f,
-                #176b5c
-            );
-            color: white;
-            padding: 25px 20px;
+        .status-loading {
+            background: #fff8e1;
+            color: #8d6e00;
         }
 
-        .header-content {
-            max-width: 900px;
-            margin: auto;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo {
-            width: 55px;
-            height: 55px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 16px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 26px;
-        }
-
-        .header p {
-            margin: 5px 0 0;
-            opacity: 0.9;
-        }
-
-        /* ================================
-           RESPONSIVE
-           ================================ */
-
-        @media (max-width: 700px) {
-
-            .photo-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-card {
-                padding: 22px;
-            }
-
-            .header h1 {
-                font-size: 21px;
-            }
-
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
     </style>
@@ -286,9 +107,9 @@
 <body>
 
 
-<!-- =========================================
+<!-- ==============================
      HEADER
-========================================= -->
+     ============================== -->
 
 <header class="header">
 
@@ -315,9 +136,9 @@
 </header>
 
 
-<!-- =========================================
-     FORM
-========================================= -->
+<!-- ==============================
+     FORM UTAMA
+     ============================== -->
 
 <main class="form-container">
 
@@ -328,12 +149,13 @@
         </h2>
 
         <p class="form-description">
-            Lengkapi data pemantauan dan dokumentasi kondisi
-            sebelum serta sesudah dilakukan perbaikan.
+            Silakan lengkapi data pemantauan dengan benar.
         </p>
 
 
-        <!-- TANGGAL -->
+        <!-- ==============================
+             TANGGAL
+             ============================== -->
 
         <div class="form-group">
 
@@ -345,13 +167,16 @@
             <input
                 type="date"
                 id="tanggal"
+                name="tanggal"
                 required
             >
 
         </div>
 
 
-        <!-- PETUGAS -->
+        <!-- ==============================
+             PETUGAS
+             ============================== -->
 
         <div class="form-group">
 
@@ -363,6 +188,7 @@
             <input
                 type="text"
                 id="petugas"
+                name="petugas"
                 placeholder="Masukkan nama petugas"
                 required
             >
@@ -370,7 +196,9 @@
         </div>
 
 
-        <!-- UNIT -->
+        <!-- ==============================
+             UNIT
+             ============================== -->
 
         <div class="form-group">
 
@@ -382,14 +210,17 @@
             <input
                 type="text"
                 id="unit"
-                placeholder="Contoh: Instalasi Gizi"
+                name="unit"
+                placeholder="Contoh: K3RS / Instalasi Gizi"
                 required
             >
 
         </div>
 
 
-        <!-- LOKASI -->
+        <!-- ==============================
+             LOKASI
+             ============================== -->
 
         <div class="form-group">
 
@@ -401,14 +232,17 @@
             <input
                 type="text"
                 id="lokasi"
-                placeholder="Contoh: Koridor Gedung A"
+                name="lokasi"
+                placeholder="Contoh: Koridor Gedung Teratai"
                 required
             >
 
         </div>
 
 
-        <!-- RISIKO -->
+        <!-- ==============================
+             RISIKO
+             ============================== -->
 
         <div class="form-group">
 
@@ -419,6 +253,7 @@
 
             <textarea
                 id="risiko"
+                name="risiko"
                 placeholder="Tuliskan potensi risiko yang ditemukan"
                 required
             ></textarea>
@@ -426,7 +261,9 @@
         </div>
 
 
-        <!-- DAMPAK -->
+        <!-- ==============================
+             DAMPAK
+             ============================== -->
 
         <div class="form-group">
 
@@ -437,6 +274,7 @@
 
             <textarea
                 id="dampak"
+                name="dampak"
                 placeholder="Tuliskan dampak yang mungkin terjadi"
                 required
             ></textarea>
@@ -444,7 +282,9 @@
         </div>
 
 
-        <!-- PENGENDALIAN -->
+        <!-- ==============================
+             PENGENDALIAN
+             ============================== -->
 
         <div class="form-group">
 
@@ -455,6 +295,7 @@
 
             <textarea
                 id="pengendalian"
+                name="pengendalian"
                 placeholder="Tuliskan pengendalian yang sudah dilakukan"
                 required
             ></textarea>
@@ -462,7 +303,9 @@
         </div>
 
 
-        <!-- HASIL -->
+        <!-- ==============================
+             HASIL PEMANTAUAN
+             ============================== -->
 
         <div class="form-group">
 
@@ -473,6 +316,7 @@
 
             <textarea
                 id="hasil"
+                name="hasil"
                 placeholder="Tuliskan hasil pemantauan"
                 required
             ></textarea>
@@ -480,7 +324,9 @@
         </div>
 
 
-        <!-- REKOMENDASI -->
+        <!-- ==============================
+             REKOMENDASI
+             ============================== -->
 
         <div class="form-group">
 
@@ -491,6 +337,7 @@
 
             <textarea
                 id="rekomendasi"
+                name="rekomendasi"
                 placeholder="Tuliskan rekomendasi perbaikan"
                 required
             ></textarea>
@@ -498,95 +345,89 @@
         </div>
 
 
-        <!-- =====================================
-             DOKUMENTASI FOTO
-        ====================================== -->
+        <!-- ==============================
+             FOTO BEFORE & AFTER
+             ============================== -->
 
         <div class="photo-section">
 
-            <div class="photo-title">
-                📷 Dokumentasi Kondisi
+            <h3>
+                Dokumentasi Foto
+            </h3>
+
+            <p>
+                Upload foto kondisi sebelum dan sesudah perbaikan.
+                Foto akan disimpan otomatis ke Google Drive.
+            </p>
+
+
+            <!-- FOTO BEFORE -->
+
+            <div class="photo-group">
+
+                <label for="fotoBefore">
+                    Foto Before
+                    <span class="required">*</span>
+                </label>
+
+                <input
+                    type="file"
+                    id="fotoBefore"
+                    name="fotoBefore"
+                    accept="image/*"
+                    capture="environment"
+                >
+
+                <img
+                    id="previewBefore"
+                    class="photo-preview"
+                    alt="Preview Foto Before"
+                >
+
             </div>
 
-            <div class="photo-description">
-                Upload foto kondisi sebelum dan sesudah
-                dilakukan tindakan perbaikan.
-            </div>
 
+            <!-- FOTO AFTER -->
 
-            <div class="photo-grid">
+            <div class="photo-group">
 
+                <label for="fotoAfter">
+                    Foto After
+                    <span class="required">*</span>
+                </label>
 
-                <!-- FOTO BEFORE -->
+                <input
+                    type="file"
+                    id="fotoAfter"
+                    name="fotoAfter"
+                    accept="image/*"
+                    capture="environment"
+                >
 
-                <div class="photo-box">
-
-                    <h3>
-                        📸 Foto Before
-                    </h3>
-
-                    <p>
-                        Kondisi sebelum dilakukan perbaikan.
-                    </p>
-
-                    <input
-                        type="file"
-                        id="fotoBefore"
-                        accept="image/*"
-                        onchange="previewFoto('fotoBefore','previewBefore')"
-                    >
-
-                    <img
-                        id="previewBefore"
-                        class="preview"
-                        alt="Preview Foto Before"
-                    >
-
-                </div>
-
-
-                <!-- FOTO AFTER -->
-
-                <div class="photo-box">
-
-                    <h3>
-                        📸 Foto After
-                    </h3>
-
-                    <p>
-                        Kondisi setelah dilakukan perbaikan.
-                    </p>
-
-                    <input
-                        type="file"
-                        id="fotoAfter"
-                        accept="image/*"
-                        onchange="previewFoto('fotoAfter','previewAfter')"
-                    >
-
-                    <img
-                        id="previewAfter"
-                        class="preview"
-                        alt="Preview Foto After"
-                    >
-
-                </div>
-
+                <img
+                    id="previewAfter"
+                    class="photo-preview"
+                    alt="Preview Foto After"
+                >
 
             </div>
 
         </div>
 
 
-        <!-- STATUS -->
+        <!-- ==============================
+             STATUS MESSAGE
+             ============================== -->
 
         <div
-            id="statusBox"
-            class="status-box"
+            id="statusMessage"
+            class="status-message"
         ></div>
 
 
-        <!-- TOMBOL SIMPAN -->
+        <!-- ==============================
+             TOMBOL SIMPAN
+             ============================== -->
 
         <button
             type="button"
@@ -600,7 +441,9 @@
         </button>
 
 
-        <!-- KEMBALI -->
+        <!-- ==============================
+             KEMBALI
+             ============================== -->
 
         <a
             href="index.html"
@@ -619,117 +462,256 @@
 
 <script>
 
-/* ==========================================
+/* =====================================================
    URL GOOGLE APPS SCRIPT
-========================================== */
+   ===================================================== */
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzDROHr930UDtsF5iWHzIbLKwDItsuZbtQqCNerEKAGHwdDj6B8uk0Xox4LziT-_eIhsw/exec";
+const GOOGLE_SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbz9ZhXgU-YEWyMcIvepCwfFQG7yzP0dXrxoo9jgBicvxZCmzU4-M5z_jOzZ45_pr4wEMQ/exec";
 
 
-/* ==========================================
-   PREVIEW FOTO
-========================================== */
+/* =====================================================
+   PREVIEW FOTO BEFORE
+   ===================================================== */
 
-function previewFoto(inputId, previewId) {
+document
+    .getElementById("fotoBefore")
+    .addEventListener("change", function () {
 
-    const input =
-        document.getElementById(inputId);
+        previewFoto(
+            this,
+            "previewBefore"
+        );
+
+    });
+
+
+/* =====================================================
+   PREVIEW FOTO AFTER
+   ===================================================== */
+
+document
+    .getElementById("fotoAfter")
+    .addEventListener("change", function () {
+
+        previewFoto(
+            this,
+            "previewAfter"
+        );
+
+    });
+
+
+/* =====================================================
+   FUNGSI PREVIEW FOTO
+   ===================================================== */
+
+function previewFoto(input, previewId) {
 
     const preview =
         document.getElementById(previewId);
 
-    if (!input.files || !input.files[0]) {
+    if (
+        input.files &&
+        input.files[0]
+    ) {
 
-        preview.style.display = "none";
+        const file =
+            input.files[0];
 
-        return;
-    }
+        if (
+            !file.type.startsWith("image/")
+        ) {
 
-    const file = input.files[0];
+            alert(
+                "File yang dipilih harus berupa gambar."
+            );
 
-    /* Batas ukuran 5 MB */
+            input.value = "";
 
-    if (file.size > 5 * 1024 * 1024) {
+            preview.style.display = "none";
 
-        alert(
-            "Ukuran foto terlalu besar. " +
-            "Maksimal 5 MB per foto."
-        );
+            return;
+        }
 
-        input.value = "";
+        const reader =
+            new FileReader();
 
-        preview.style.display = "none";
+        reader.onload =
+            function (event) {
 
-        return;
-    }
+                preview.src =
+                    event.target.result;
 
-    const reader =
-        new FileReader();
+                preview.style.display =
+                    "block";
 
-    reader.onload = function(event) {
+            };
 
-        preview.src =
-            event.target.result;
+        reader.readAsDataURL(file);
+
+    } else {
 
         preview.style.display =
-            "block";
+            "none";
 
-    };
+    }
 
-    reader.readAsDataURL(file);
 }
 
 
-/* ==========================================
-   FILE → BASE64
-========================================== */
+/* =====================================================
+   KOMPRES FOTO
+   Agar ukuran data tidak terlalu besar
+   ===================================================== */
 
-function fileToBase64(file) {
+function kompresFoto(file) {
 
     return new Promise(
-        (resolve, reject) => {
-
-            if (!file) {
-
-                resolve("");
-
-                return;
-            }
+        function (resolve, reject) {
 
             const reader =
                 new FileReader();
 
-            reader.onload = function() {
+            reader.onload =
+                function (event) {
 
-                /*
-                 * Hapus bagian:
-                 * data:image/jpeg;base64,
-                 */
+                    const img =
+                        new Image();
 
-                const result =
-                    reader.result;
+                    img.onload =
+                        function () {
 
-                const base64 =
-                    result.split(",")[1];
+                            const MAX_WIDTH =
+                                1200;
 
-                resolve(base64);
+                            const MAX_HEIGHT =
+                                1200;
 
-            };
+                            let width =
+                                img.width;
+
+                            let height =
+                                img.height;
+
+
+                            /* ==========================
+                               Menyesuaikan ukuran
+                               ========================== */
+
+                            if (
+                                width > MAX_WIDTH ||
+                                height > MAX_HEIGHT
+                            ) {
+
+                                const ratio =
+                                    Math.min(
+                                        MAX_WIDTH / width,
+                                        MAX_HEIGHT / height
+                                    );
+
+                                width =
+                                    Math.round(
+                                        width * ratio
+                                    );
+
+                                height =
+                                    Math.round(
+                                        height * ratio
+                                    );
+
+                            }
+
+
+                            /* ==========================
+                               Canvas
+                               ========================== */
+
+                            const canvas =
+                                document.createElement(
+                                    "canvas"
+                                );
+
+                            canvas.width =
+                                width;
+
+                            canvas.height =
+                                height;
+
+
+                            const ctx =
+                                canvas.getContext(
+                                    "2d"
+                                );
+
+
+                            ctx.drawImage(
+                                img,
+                                0,
+                                0,
+                                width,
+                                height
+                            );
+
+
+                            /* ==========================
+                               Convert ke JPEG
+                               ========================== */
+
+                            const compressed =
+                                canvas.toDataURL(
+                                    "image/jpeg",
+                                    0.75
+                                );
+
+                            resolve(
+                                compressed
+                            );
+
+                        };
+
+
+                    img.onerror =
+                        function () {
+
+                            reject(
+                                new Error(
+                                    "Foto tidak dapat diproses."
+                                )
+                            );
+
+                        };
+
+
+                    img.src =
+                        event.target.result;
+
+                };
+
 
             reader.onerror =
-                reject;
+                function () {
+
+                    reject(
+                        new Error(
+                            "Foto gagal dibaca."
+                        )
+                    );
+
+                };
+
 
             reader.readAsDataURL(file);
 
         }
     );
+
 }
 
 
-/* ==========================================
-   TAMPILKAN STATUS
-========================================== */
+/* =====================================================
+   MENAMPILKAN PESAN STATUS
+   ===================================================== */
 
 function tampilkanStatus(
     pesan,
@@ -737,65 +719,120 @@ function tampilkanStatus(
 ) {
 
     const box =
-        document.getElementById("statusBox");
+        document.getElementById(
+            "statusMessage"
+        );
+
+    box.textContent =
+        pesan;
 
     box.className =
-        "status-box";
+        "status-message";
 
     box.classList.add(
-        "status-" + tipe
+        tipe
     );
 
-    box.innerHTML =
-        pesan;
+    box.style.display =
+        "block";
 
 }
 
 
-/* ==========================================
+/* =====================================================
    SIMPAN PEMANTAUAN
-========================================== */
+   ===================================================== */
 
 async function simpanPemantauan() {
 
+    const btn =
+        document.getElementById(
+            "btnSimpan"
+        );
+
+
+    /* =================================================
+       AMBIL DATA FORM
+       ================================================= */
+
     const tanggal =
-        document.getElementById("tanggal").value;
+        document
+            .getElementById("tanggal")
+            .value
+            .trim();
+
 
     const petugas =
-        document.getElementById("petugas").value.trim();
+        document
+            .getElementById("petugas")
+            .value
+            .trim();
+
 
     const unit =
-        document.getElementById("unit").value.trim();
+        document
+            .getElementById("unit")
+            .value
+            .trim();
+
 
     const lokasi =
-        document.getElementById("lokasi").value.trim();
+        document
+            .getElementById("lokasi")
+            .value
+            .trim();
+
 
     const risiko =
-        document.getElementById("risiko").value.trim();
+        document
+            .getElementById("risiko")
+            .value
+            .trim();
+
 
     const dampak =
-        document.getElementById("dampak").value.trim();
+        document
+            .getElementById("dampak")
+            .value
+            .trim();
+
 
     const pengendalian =
-        document.getElementById("pengendalian").value.trim();
+        document
+            .getElementById("pengendalian")
+            .value
+            .trim();
+
 
     const hasil =
-        document.getElementById("hasil").value.trim();
+        document
+            .getElementById("hasil")
+            .value
+            .trim();
+
 
     const rekomendasi =
-        document.getElementById("rekomendasi").value.trim();
+        document
+            .getElementById("rekomendasi")
+            .value
+            .trim();
 
 
-    const fotoBeforeInput =
-        document.getElementById("fotoBefore");
+    const fileBefore =
+        document
+            .getElementById("fotoBefore")
+            .files[0];
 
-    const fotoAfterInput =
-        document.getElementById("fotoAfter");
+
+    const fileAfter =
+        document
+            .getElementById("fotoAfter")
+            .files[0];
 
 
-    /* ======================================
-       VALIDASI
-    ====================================== */
+    /* =================================================
+       VALIDASI DATA
+       ================================================= */
 
     if (
         !tanggal ||
@@ -810,95 +847,129 @@ async function simpanPemantauan() {
     ) {
 
         tampilkanStatus(
-            "⚠️ Mohon lengkapi seluruh data wajib terlebih dahulu.",
-            "error"
+            "Mohon lengkapi seluruh data pemantauan terlebih dahulu.",
+            "status-error"
         );
 
         return;
+
     }
 
 
-    /* ======================================
-       CEK FOTO
-    ====================================== */
+    /* =================================================
+       VALIDASI FOTO
+       ================================================= */
 
-    const fotoBefore =
-        fotoBeforeInput.files[0];
-
-    const fotoAfter =
-        fotoAfterInput.files[0];
-
-
-    if (!fotoBefore || !fotoAfter) {
+    if (!fileBefore) {
 
         tampilkanStatus(
-            "⚠️ Mohon upload Foto Before dan Foto After.",
-            "error"
+            "Mohon upload Foto Before terlebih dahulu.",
+            "status-error"
         );
 
         return;
+
     }
 
 
-    /* ======================================
-       NONAKTIFKAN TOMBOL
-    ====================================== */
+    if (!fileAfter) {
 
-    const tombol =
-        document.getElementById("btnSimpan");
+        tampilkanStatus(
+            "Mohon upload Foto After terlebih dahulu.",
+            "status-error"
+        );
 
-    tombol.disabled =
+        return;
+
+    }
+
+
+    if (
+        !fileBefore.type.startsWith("image/")
+    ) {
+
+        tampilkanStatus(
+            "Foto Before harus berupa file gambar.",
+            "status-error"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !fileAfter.type.startsWith("image/")
+    ) {
+
+        tampilkanStatus(
+            "Foto After harus berupa file gambar.",
+            "status-error"
+        );
+
+        return;
+
+    }
+
+
+    /* =================================================
+       MULAI PROSES
+       ================================================= */
+
+    btn.disabled =
         true;
 
-    tombol.innerHTML =
-        "⏳ Sedang menyimpan data...";
+    btn.textContent =
+        "MENYIMPAN...";
 
 
     tampilkanStatus(
-        "⏳ Data sedang dikirim ke sistem. Mohon jangan menutup halaman...",
-        "loading"
+        "Sedang memproses data dan mengunggah foto. Mohon tunggu...",
+        "status-loading"
     );
 
 
     try {
 
-        /* ==================================
-           KONVERSI FOTO
-        ================================== */
 
-        const beforeBase64 =
-            await fileToBase64(
-                fotoBefore
-            );
+        /* =============================================
+           KOMPRES FOTO
+           ============================================= */
 
-        const afterBase64 =
-            await fileToBase64(
-                fotoAfter
+        const fotoBefore =
+            await kompresFoto(
+                fileBefore
             );
 
 
-        /* ==================================
+        const fotoAfter =
+            await kompresFoto(
+                fileAfter
+            );
+
+
+        /* =============================================
            DATA YANG DIKIRIM
-        ================================== */
+           ============================================= */
 
         const data = {
 
-            jenis:
-                "Keselamatan Lingkungan",
+            jenisPemantauan:
+                "Pemantauan Risiko Keselamatan Lingkungan",
 
-            tanggal:
+            tanggalPemantauan:
                 tanggal,
 
-            petugas:
+            namaPetugas:
                 petugas,
 
-            unit:
+            ruangan:
                 unit,
 
-            lokasi:
+            areaLokasi:
                 lokasi,
 
-            risiko:
+            potensiRisiko:
                 risiko,
 
             dampak:
@@ -907,119 +978,163 @@ async function simpanPemantauan() {
             pengendalian:
                 pengendalian,
 
-            hasil:
+            hasilPemantauan:
                 hasil,
 
             rekomendasi:
                 rekomendasi,
 
-
-            /* FOTO BEFORE */
+            status:
+                "Belum Ditindaklanjuti",
 
             fotoBefore:
-                beforeBase64,
-
-            namaFotoBefore:
-                fotoBefore.name,
-
-            tipeFotoBefore:
-                fotoBefore.type,
-
-
-            /* FOTO AFTER */
+                fotoBefore,
 
             fotoAfter:
-                afterBase64,
-
-            namaFotoAfter:
-                fotoAfter.name,
-
-            tipeFotoAfter:
-                fotoAfter.type
+                fotoAfter
 
         };
 
 
-        /* ==================================
+        /* =============================================
            KIRIM KE GOOGLE APPS SCRIPT
-        ================================== */
+           ============================================= */
 
         await fetch(
-            SCRIPT_URL,
+            GOOGLE_SCRIPT_URL,
             {
+
                 method: "POST",
 
                 mode: "no-cors",
 
                 headers: {
+
                     "Content-Type":
                         "text/plain;charset=utf-8"
+
                 },
 
                 body:
                     JSON.stringify(data)
+
             }
         );
 
 
-        /* ==================================
+        /* =============================================
            BERHASIL DIKIRIM
-        ================================== */
+           ============================================= */
 
         tampilkanStatus(
-            "✅ Data pemantauan berhasil dikirim ke sistem.<br>" +
-            "Data akan tercatat pada Google Sheet dan " +
-            "dokumentasi foto tersimpan di Google Drive.",
-            "success"
+            "Data berhasil dikirim. Silakan cek Google Sheet dan Google Drive.",
+            "status-success"
         );
 
 
-        /* ==================================
+        alert(
+            "Pemantauan berhasil disimpan!\n\n" +
+            "Data akan masuk ke Google Sheet dan foto akan disimpan ke Google Drive."
+        );
+
+
+        /* =============================================
            RESET FORM
-        ================================== */
+           ============================================= */
 
-        document.getElementById("tanggal").value = "";
-        document.getElementById("petugas").value = "";
-        document.getElementById("unit").value = "";
-        document.getElementById("lokasi").value = "";
-        document.getElementById("risiko").value = "";
-        document.getElementById("dampak").value = "";
-        document.getElementById("pengendalian").value = "";
-        document.getElementById("hasil").value = "";
-        document.getElementById("rekomendasi").value = "";
-
-        fotoBeforeInput.value = "";
-        fotoAfterInput.value = "";
-
-        document.getElementById(
-            "previewBefore"
-        ).style.display = "none";
-
-        document.getElementById(
-            "previewAfter"
-        ).style.display = "none";
+        document
+            .getElementById("tanggal")
+            .value = "";
 
 
-    }
+        document
+            .getElementById("petugas")
+            .value = "";
 
-    catch (error) {
 
-        console.error(error);
+        document
+            .getElementById("unit")
+            .value = "";
 
-        tampilkanStatus(
-            "❌ Terjadi kesalahan saat mengirim data. " +
-            "Silakan coba kembali.",
-            "error"
+
+        document
+            .getElementById("lokasi")
+            .value = "";
+
+
+        document
+            .getElementById("risiko")
+            .value = "";
+
+
+        document
+            .getElementById("dampak")
+            .value = "";
+
+
+        document
+            .getElementById("pengendalian")
+            .value = "";
+
+
+        document
+            .getElementById("hasil")
+            .value = "";
+
+
+        document
+            .getElementById("rekomendasi")
+            .value = "";
+
+
+        document
+            .getElementById("fotoBefore")
+            .value = "";
+
+
+        document
+            .getElementById("fotoAfter")
+            .value = "";
+
+
+        document
+            .getElementById("previewBefore")
+            .style.display = "none";
+
+
+        document
+            .getElementById("previewAfter")
+            .style.display = "none";
+
+
+    } catch (error) {
+
+
+        console.error(
+            "Error:",
+            error
         );
 
-    }
 
-    finally {
+        tampilkanStatus(
+            "Data gagal dikirim. Periksa koneksi internet dan konfigurasi Apps Script.",
+            "status-error"
+        );
 
-        tombol.disabled =
+
+        alert(
+            "Data gagal dikirim.\n\n" +
+            "Silakan coba lagi."
+        );
+
+
+    } finally {
+
+
+        btn.disabled =
             false;
 
-        tombol.innerHTML =
+        btn.textContent =
             "SIMPAN PEMANTAUAN";
 
     }
