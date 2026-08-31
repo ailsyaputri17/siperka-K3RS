@@ -92,7 +92,7 @@
             </div>
 
 
-            <!-- UNIT / RUANGAN -->
+            <!-- UNIT -->
 
             <div class="form-group">
 
@@ -206,6 +206,50 @@
             </div>
 
 
+            <!-- FOTO BEFORE -->
+
+            <div class="form-group">
+
+                <label for="fotoBefore">
+                    Foto Before
+                </label>
+
+                <input
+                    type="file"
+                    id="fotoBefore"
+                    accept="image/*">
+
+                <small>
+                    Upload foto kondisi sebelum dilakukan perbaikan.
+                </small>
+
+                <div id="previewBefore"></div>
+
+            </div>
+
+
+            <!-- FOTO AFTER -->
+
+            <div class="form-group">
+
+                <label for="fotoAfter">
+                    Foto After
+                </label>
+
+                <input
+                    type="file"
+                    id="fotoAfter"
+                    accept="image/*">
+
+                <small>
+                    Upload foto kondisi setelah dilakukan perbaikan.
+                </small>
+
+                <div id="previewAfter"></div>
+
+            </div>
+
+
             <!-- TOMBOL -->
 
             <button
@@ -237,6 +281,7 @@
 
 <script>
 
+
 /* =====================================================
    URL GOOGLE APPS SCRIPT
    ===================================================== */
@@ -246,7 +291,161 @@ const API_URL =
 
 
 /* =====================================================
-   FUNGSI SIMPAN PEMANTAUAN
+   PREVIEW FOTO BEFORE
+   ===================================================== */
+
+document
+    .getElementById("fotoBefore")
+    .addEventListener("change", function () {
+
+        tampilkanPreview(
+            this,
+            "previewBefore"
+        );
+
+    });
+
+
+/* =====================================================
+   PREVIEW FOTO AFTER
+   ===================================================== */
+
+document
+    .getElementById("fotoAfter")
+    .addEventListener("change", function () {
+
+        tampilkanPreview(
+            this,
+            "previewAfter"
+        );
+
+    });
+
+
+/* =====================================================
+   FUNGSI PREVIEW
+   ===================================================== */
+
+function tampilkanPreview(input, targetId) {
+
+    const target =
+        document.getElementById(targetId);
+
+    target.innerHTML = "";
+
+
+    if (
+        !input.files ||
+        !input.files[0]
+    ) {
+
+        return;
+
+    }
+
+
+    const file =
+        input.files[0];
+
+
+    if (
+        !file.type.startsWith("image/")
+    ) {
+
+        alert(
+            "File harus berupa gambar."
+        );
+
+        input.value = "";
+
+        return;
+
+    }
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload = function (event) {
+
+        const img =
+            document.createElement("img");
+
+
+        img.src =
+            event.target.result;
+
+
+        img.style.maxWidth =
+            "250px";
+
+        img.style.maxHeight =
+            "250px";
+
+        img.style.marginTop =
+            "10px";
+
+        img.style.borderRadius =
+            "8px";
+
+
+        target.appendChild(img);
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =====================================================
+   UBAH FILE MENJADI BASE64
+   ===================================================== */
+
+function fileToBase64(file) {
+
+    return new Promise(function(resolve, reject) {
+
+        if (!file) {
+
+            resolve("");
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload = function() {
+
+            resolve(
+                reader.result
+            );
+
+        };
+
+
+        reader.onerror = function(error) {
+
+            reject(error);
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* =====================================================
+   SIMPAN PEMANTAUAN
    ===================================================== */
 
 async function simpanPemantauan(event) {
@@ -259,35 +458,85 @@ async function simpanPemantauan(event) {
        ------------------------------------------------- */
 
     const tanggal =
-        document.getElementById("tanggal").value;
+        document
+        .getElementById("tanggal")
+        .value;
+
 
     const petugas =
-        document.getElementById("petugas").value.trim();
+        document
+        .getElementById("petugas")
+        .value
+        .trim();
+
 
     const unit =
-        document.getElementById("unit").value.trim();
+        document
+        .getElementById("unit")
+        .value
+        .trim();
+
 
     const lokasi =
-        document.getElementById("lokasi").value.trim();
+        document
+        .getElementById("lokasi")
+        .value
+        .trim();
+
 
     const risiko =
-        document.getElementById("risiko").value.trim();
+        document
+        .getElementById("risiko")
+        .value
+        .trim();
+
 
     const dampak =
-        document.getElementById("dampak").value.trim();
+        document
+        .getElementById("dampak")
+        .value
+        .trim();
+
 
     const pengendalian =
-        document.getElementById("pengendalian").value.trim();
+        document
+        .getElementById("pengendalian")
+        .value
+        .trim();
+
 
     const hasil =
-        document.getElementById("hasil").value.trim();
+        document
+        .getElementById("hasil")
+        .value
+        .trim();
+
 
     const rekomendasi =
-        document.getElementById("rekomendasi").value.trim();
+        document
+        .getElementById("rekomendasi")
+        .value
+        .trim();
 
 
     /* -------------------------------------------------
-       CEK FORM
+       FILE FOTO
+       ------------------------------------------------- */
+
+    const fileBefore =
+        document
+        .getElementById("fotoBefore")
+        .files[0];
+
+
+    const fileAfter =
+        document
+        .getElementById("fotoAfter")
+        .files[0];
+
+
+    /* -------------------------------------------------
+       VALIDASI DATA
        ------------------------------------------------- */
 
     if (
@@ -312,45 +561,39 @@ async function simpanPemantauan(event) {
 
 
     /* -------------------------------------------------
-       DATA YANG DIKIRIM KE APPS SCRIPT
+       VALIDASI UKURAN FOTO
        ------------------------------------------------- */
 
-    const data = {
+    const batasUkuran =
+        5 * 1024 * 1024;
 
-        jenisPemantauan:
-            "Keselamatan",
 
-        tanggalPemantauan:
-            tanggal,
+    if (
+        fileBefore &&
+        fileBefore.size > batasUkuran
+    ) {
 
-        namaPetugas:
-            petugas,
+        alert(
+            "Foto Before terlalu besar. Maksimal 5 MB."
+        );
 
-        ruangan:
-            unit,
+        return;
 
-        areaLokasi:
-            lokasi,
+    }
 
-        potensiRisiko:
-            risiko,
 
-        dampak:
-            dampak,
+    if (
+        fileAfter &&
+        fileAfter.size > batasUkuran
+    ) {
 
-        pengendalian:
-            pengendalian,
+        alert(
+            "Foto After terlalu besar. Maksimal 5 MB."
+        );
 
-        hasilPemantauan:
-            hasil,
+        return;
 
-        rekomendasi:
-            rekomendasi,
-
-        status:
-            "Belum Diverifikasi"
-
-    };
+    }
 
 
     /* -------------------------------------------------
@@ -358,7 +601,9 @@ async function simpanPemantauan(event) {
        ------------------------------------------------- */
 
     const tombol =
-        document.getElementById("btnSimpan");
+        document
+        .getElementById("btnSimpan");
+
 
     tombol.disabled = true;
 
@@ -366,30 +611,106 @@ async function simpanPemantauan(event) {
         "MENYIMPAN...";
 
 
-    /* -------------------------------------------------
-       KIRIM KE GOOGLE APPS SCRIPT
-       ------------------------------------------------- */
-
     try {
 
+
+        /* ---------------------------------------------
+           KONVERSI FOTO
+           --------------------------------------------- */
+
+        tombol.textContent =
+            "MEMPROSES FOTO...";
+
+
+        const fotoBefore =
+            await fileToBase64(
+                fileBefore
+            );
+
+
+        const fotoAfter =
+            await fileToBase64(
+                fileAfter
+            );
+
+
+        /* ---------------------------------------------
+           DATA YANG DIKIRIM
+           --------------------------------------------- */
+
+        const data = {
+
+            jenisPemantauan:
+                "Keselamatan",
+
+            tanggalPemantauan:
+                tanggal,
+
+            namaPetugas:
+                petugas,
+
+            ruangan:
+                unit,
+
+            areaLokasi:
+                lokasi,
+
+            potensiRisiko:
+                risiko,
+
+            dampak:
+                dampak,
+
+            pengendalian:
+                pengendalian,
+
+            hasilPemantauan:
+                hasil,
+
+            rekomendasi:
+                rekomendasi,
+
+            status:
+                "Belum Diverifikasi",
+
+            fotoBefore:
+                fotoBefore,
+
+            fotoAfter:
+                fotoAfter
+
+        };
+
+
+        /* ---------------------------------------------
+           KIRIM KE APPS SCRIPT
+           --------------------------------------------- */
+
+        tombol.textContent =
+            "MENYIMPAN DATA...";
+
+
         const response =
-            await fetch(API_URL, {
+            await fetch(
+                API_URL,
+                {
 
-                method: "POST",
+                    method: "POST",
 
-                redirect: "follow",
+                    redirect: "follow",
 
-                headers: {
+                    headers: {
 
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
+                        "Content-Type":
+                            "text/plain;charset=utf-8"
 
-                },
+                    },
 
-                body:
-                    JSON.stringify(data)
+                    body:
+                        JSON.stringify(data)
 
-            });
+                }
+            );
 
 
         const hasilResponse =
@@ -402,16 +723,19 @@ async function simpanPemantauan(event) {
         );
 
 
-        /* -------------------------------------------------
-           CEK RESPONSE
-           ------------------------------------------------- */
+        /* ---------------------------------------------
+           PARSE RESPONSE
+           --------------------------------------------- */
 
         let hasilJSON;
+
 
         try {
 
             hasilJSON =
-                JSON.parse(hasilResponse);
+                JSON.parse(
+                    hasilResponse
+                );
 
         } catch (error) {
 
@@ -420,32 +744,63 @@ async function simpanPemantauan(event) {
         }
 
 
+        /* ---------------------------------------------
+           BERHASIL
+           --------------------------------------------- */
+
         if (
             hasilJSON &&
             hasilJSON.status === "success"
         ) {
 
             alert(
-                "✅ Data pemantauan berhasil disimpan ke Google Spreadsheet.\n\n" +
+
+                "✅ Data pemantauan berhasil disimpan!\n\n" +
+
                 "ID: " +
-                hasilJSON.id
+                hasilJSON.id +
+                "\n\n" +
+
+                "Data telah masuk ke Spreadsheet " +
+                "dan foto telah diproses."
+
             );
 
 
-            /* ---------------------------------------------
+            /* -----------------------------------------
                KOSONGKAN FORM
-               --------------------------------------------- */
+               ----------------------------------------- */
 
             document
                 .querySelector("form")
                 .reset();
 
 
+            document
+                .getElementById("previewBefore")
+                .innerHTML = "";
+
+
+            document
+                .getElementById("previewAfter")
+                .innerHTML = "";
+
+
         } else {
 
             alert(
+
                 "❌ Data belum berhasil disimpan.\n\n" +
-                hasilResponse
+
+                (
+                    hasilJSON &&
+                    hasilJSON.message
+                    ?
+                    hasilJSON.message
+                    :
+                    hasilResponse
+                )
+
             );
 
         }
@@ -453,15 +808,21 @@ async function simpanPemantauan(event) {
 
     } catch (error) {
 
+
         console.error(
-            "Error:",
+            "Kesalahan:",
             error
         );
 
+
         alert(
-            "❌ Gagal mengirim data ke Google Apps Script.\n\n" +
-            "Periksa koneksi internet atau URL Apps Script."
+
+            "❌ Gagal mengirim data.\n\n" +
+
+            error.message
+
         );
+
 
     }
 
